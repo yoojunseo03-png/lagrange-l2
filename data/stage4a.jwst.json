@@ -1,0 +1,332 @@
+{
+ "schema_version": "1.0.0",
+ "id": "stage4a.jwst",
+ "kind": "trajectory",
+ "title": {
+  "ko": "JWST 재구성 궤적 (4-A, 2022-02-01 ~ 2026-10-05)",
+  "en": "JWST reconstructed trajectory (4-A, 2022-02-01 to 2026-10-05)"
+ },
+ "provenance": {
+  "stage": "4-A",
+  "model": "Horizons JWST (재구성)",
+  "model_ko": "재구성 (비행) 궤적 — Horizons",
+  "verification": {
+   "tag": "external",
+   "detail": "measurement",
+   "no": 5,
+   "tag_ko": "외부 대조",
+   "detail_ko": "자료 측정"
+  },
+  "source": [
+   {
+    "file": "data/horizons/na1_jwst_geo_20220201_20260921_1440m.txt.gz",
+    "key": "JWST 지구 중심, 1 일 간격 (2022-02-01 ~ 2026-09-21)"
+   },
+   {
+    "file": "data/horizons/jwst_geo_20260921_20261102_10m_fetched20261008.txt.gz",
+    "key": "03U 10 분 간격 (9/21 ~ 10/05 00:01 앞, DEFINITIVE)"
+   }
+  ],
+  "computed_by": "stage4a._jwst_interps·_rho_func (하루 간격, 4-A 회전·맥동 좌표) + web_export.jwst_to_scene (10 분 간격, 같은 좌표)",
+  "ref_commit": "e1f4a3e",
+  "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+ },
+ "frame": "rot_nd",
+ "time": null,
+ "frame_note": "맥동 좌표 ρ (원점 EMB, x = 태양→EMB, 길이 = 그 순간 태양–EMB 거리, 4-A 정의) + (1 − μ, 0, 0). 화면 회전좌표와 같은 자리",
+ "parts": {
+  "daily": {
+   "t_first_tdb_s": 696945600.0,
+   "t_last_tdb_s": 843220800.0,
+   "n": 1694,
+   "style": "점 (받은 점 그대로)",
+   "file": "data/horizons/na1_jwst_geo_20220201_20260921_1440m.txt.gz"
+  },
+  "interp": {
+   "step_h": 6.0,
+   "n": 6773,
+   "style": "점선 (하루 마디 사이 3차 에르미트 보간 — 4-A 주기 측정과 같은 식)",
+   "method": "stage4a._jwst_interps(1) (src/hermite.CubicHermite)"
+  },
+  "tenmin": {
+   "t_first_tdb_s": 843221400.0,
+   "t_last_tdb_s": 844430400.0,
+   "n": 2016,
+   "file": "data/horizons/jwst_geo_20260921_20261102_10m_fetched20261008.txt.gz",
+   "style": "실선 (10 분 간격 받은 점을 이음 — 태양·EMB 위치는 3 시간 마디 에르미트)",
+   "end_rule": "03U DEFINITIVE 끝 2026-10-05 00:01:00 TDB 앞"
+  }
+ },
+ "marker": {
+  "t_tdb_s": 844430400.0,
+  "text": {
+   "ko": "2026-10-05 00:00 TDB (재구성 끝)",
+   "en": "2026-10-05 00:00 TDB (end of reconstruction)"
+  }
+ },
+ "join": {
+  "t_tdb_s": 843220800.0,
+  "when": "2026-09-21 00:00",
+  "text": {
+   "ko": "재구성 궤적은 2026-09-21 00:00 TDB 에서 하루 간격 자료 (na1) 와 10 분 간격 자료 (03U) 를 잇는다.",
+   "en": "The reconstructed trajectory joins the daily file (na1) and the 10-minute file (03U) at 2026-09-21 00:00 TDB."
+  },
+  "items": [
+   {
+    "id": "jwst_join_daily_10m",
+    "value": 0.0,
+    "text": "0.000",
+    "unit": "km",
+    "label": {
+     "ko": "이음 위치 차 (하루 간격 ↔ 10 분 간격)",
+     "en": "Join position difference (daily ↔ 10-minute)"
+    },
+    "note": {
+     "ko": "2026-09-21 00:00 TDB, 같은 시각 두 자료의 지구 중심 위치 차. 자료 측정",
+     "en": "2026-09-21 00:00 TDB, geocentric position difference of the two files at the same time. Measurement from data"
+    },
+    "provenance": {
+     "stage": "4-A·5",
+     "model": "Horizons JWST (재구성)",
+     "model_ko": "재구성 (비행) 궤적 — Horizons",
+     "verification": {
+      "tag": "external",
+      "detail": "measurement",
+      "no": 5,
+      "tag_ko": "외부 대조",
+      "detail_ko": "자료 측정"
+     },
+     "source": [
+      {
+       "file": "data/horizons/na1_jwst_geo_20220201_20260921_1440m.txt.gz",
+       "key": "마지막 점 2026-09-21 00:00 TDB"
+      },
+      {
+       "file": "data/horizons/jwst_geo_20260921_20261102_10m_fetched20261008.txt.gz",
+       "key": "2026-09-21 00:00 TDB 의 점"
+      }
+     ],
+     "computed_by": "web_export.jwst_join_block (|r_na1 − r_03U|)",
+     "ref_commit": "e1f4a3e",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   },
+   {
+    "id": "jwst_join_01U_03U",
+    "value": 0.34713763346962345,
+    "text": "0.35",
+    "unit": "km",
+    "label": {
+     "ko": "같은 시각 01U 사본 대 03U",
+     "en": "01U copy vs 03U at the same time"
+    },
+    "note": {
+     "ko": "9/27 사본 (01U) 과 03U 의 2026-09-21 00:00 TDB 위치 차 — 물리 검증 층의 JPL 01U 선이 재구성에서 이만큼 떨어져 시작한다",
+     "en": "Position difference between the 9/27 copy (01U) and 03U at 2026-09-21 00:00 TDB — the JPL 01U line of the physical-validation layer starts this far from the reconstruction"
+    },
+    "provenance": {
+     "stage": "5",
+     "model": "Horizons JWST (사본 대조)",
+     "model_ko": "JPL 사본 두 개의 같은 시각 차",
+     "verification": {
+      "tag": "external",
+      "detail": "measurement",
+      "no": 5,
+      "tag_ko": "외부 대조",
+      "detail_ko": "자료 측정"
+     },
+     "source": [
+      {
+       "file": "results/stage5.json",
+       "key": "5-6_재구성>JPL_01U_예측_대_재구성>2026-09-21"
+      }
+     ],
+     "computed_by": "results/stage5.json",
+     "ref_commit": "2e8cc45",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   }
+  ]
+ },
+ "period_card": {
+  "verification": {
+   "tag": "physical",
+   "detail": "physical",
+   "no": 7,
+   "tag_ko": "물리 검증",
+   "detail_ko": "물리",
+   "weak": {
+    "ko": "한 가지 양 — 주기",
+    "en": "one quantity — period"
+   }
+  },
+  "classification_source": {
+   "file": "results/stage4a.json",
+   "key": "분류확인_JWST주기_대_헤일로>분류",
+   "value": "물리 검증 (약함, 한 가지 양 — 주기)"
+  },
+  "summary": {
+   "ko": "JWST 재구성 궤적의 한 바퀴는 같은 크기의 CR3BP 헤일로 주기와 맞고, NASA 원문의 값과는 맞지 않는다 (아래 숫자).",
+   "en": "One circuit of JWST's reconstructed trajectory matches the period of CR3BP halos of the same size, but not the value in NASA's text (numbers below)."
+  },
+  "unknown": {
+   "ko": "NASA 원문의 값은 원인 미확인 — 재구성 궤적을 어느 정의로 재도 나오지 않고, 그 주기의 CR3BP 헤일로는 JWST 보다 훨씬 크다 (4-A 주기 조사).",
+   "en": "The value in NASA's text: cause not identified — no definition applied to the reconstructed trajectory gives it, and the CR3BP halo with that period is far larger than JWST (4-A period study)."
+  },
+  "items": [
+   {
+    "id": "jwst_period_nasa",
+    "value": 168.0,
+    "text": "168",
+    "unit": {
+     "ko": "일",
+     "en": "d"
+    },
+    "label": {
+     "ko": "NASA 원문의 한 바퀴",
+     "en": "One circuit (NASA text)"
+    },
+    "note": {
+     "ko": "NASA 원문 \"completing one circuit every 168 days\" (science.nasa.gov/asset/webb/webbs-orbit-at-sun-earth-lagrange-point-2-l2/, 확인 2026-10-27). 어느 좌표·사건으로 잰 주기인지 원문에 없다. 외부 대조 — 맞지 않음 (원인 미확인)",
+     "en": "NASA text \"completing one circuit every 168 days\" (science.nasa.gov/asset/webb/webbs-orbit-at-sun-earth-lagrange-point-2-l2/, checked 2026-10-27). The text does not say in which frame or by which event the period is measured. External comparison — does not match (cause not identified)"
+    },
+    "provenance": {
+     "stage": "4-A",
+     "model": "NASA (문헌)",
+     "model_ko": "NASA 원문",
+     "verification": {
+      "tag": "external",
+      "detail": "external",
+      "no": 4,
+      "tag_ko": "외부 대조",
+      "detail_ko": "외부 대조"
+     },
+     "source": [
+      {
+       "file": "results/stage4a.json",
+       "key": "A4_JWST>비교표>사실A2_일"
+      }
+     ],
+     "computed_by": "results/stage4a.json",
+     "ref_commit": "1590254",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   },
+   {
+    "id": "jwst_period_recon",
+    "value": [
+     179.71525540108377,
+     180.629090092306
+    ],
+    "text": "179.72 ~ 180.63",
+    "unit": {
+     "ko": "일",
+     "en": "d"
+    },
+    "label": {
+     "ko": "재구성 궤적의 한 바퀴 (정의 12 개의 평균)",
+     "en": "One circuit of the reconstructed trajectory (means of 12 definitions)"
+    },
+    "note": {
+     "ko": "x−γ·y·z 의 0 통과 (올라감·내려감)·극대·극소 12 가지 정의로 잰 바퀴 길이의 평균 범위 (완성된 바퀴만, 1 시간 격자). 자료 측정",
+     "en": "Range of mean circuit lengths over 12 definitions (zero crossings up/down, maxima, minima of x−γ, y, z; complete circuits only, 1-hour grid). Measurement from data"
+    },
+    "provenance": {
+     "stage": "4-A",
+     "model": "Horizons JWST (재구성)",
+     "model_ko": "재구성 (비행) 궤적",
+     "verification": {
+      "tag": "external",
+      "detail": "measurement",
+      "no": 5,
+      "tag_ko": "외부 대조",
+      "detail_ko": "자료 측정"
+     },
+     "source": [
+      {
+       "file": "results/stage4a_주기조사.json",
+       "key": "한바퀴_정의_평균_범위_일"
+      }
+     ],
+     "computed_by": "results/stage4a_주기조사.json",
+     "ref_commit": "103fa3f",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   },
+   {
+    "id": "jwst_period_halo",
+    "value": [
+     179.71566959770104,
+     180.10289042700722
+    ],
+    "text": "179.72 ~ 180.10",
+    "unit": {
+     "ko": "일",
+     "en": "d"
+    },
+    "label": {
+     "ko": "같은 크기 헤일로의 주기 (|z| 최대 30만 ~ 50만 km)",
+     "en": "Period of halos of the same size (max |z| 300,000–500,000 km)"
+    },
+    "note": {
+     "ko": "3-C CR3BP 헤일로 족 가운데 JWST 와 크기가 같은 궤도들의 주기 범위. JWST 재구성 한 바퀴와 맞음 — 물리 검증 (약함, 한 가지 양 — 주기): 궤도는 진폭으로 골랐고 주기는 쓰지 않았다. 이 크기에서 주기가 거의 일정해 크기를 가리는 힘은 작다",
+     "en": "Period range of 3-C CR3BP halo-family orbits of JWST's size. Matches JWST's reconstructed circuit — physical validation (weak, one quantity — period): the orbit was chosen by amplitude, not period. Period is nearly constant at this size, so it discriminates size only weakly"
+    },
+    "provenance": {
+     "stage": "3-C·4-A",
+     "model": "CR3BP",
+     "model_ko": "원궤도 제한 삼체 문제",
+     "verification": {
+      "tag": "physical",
+      "detail": "physical",
+      "no": 7,
+      "tag_ko": "물리 검증",
+      "detail_ko": "물리",
+      "weak": {
+       "ko": "한 가지 양 — 주기",
+       "en": "one quantity — period"
+      }
+     },
+     "source": [
+      {
+       "file": "results/stage4a_주기조사.json",
+       "key": "헤일로족>|z|최대_30만~50만km_주기_범위_일"
+      }
+     ],
+     "computed_by": "results/stage4a_주기조사.json",
+     "ref_commit": "103fa3f",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   }
+  ]
+ },
+ "binary": {
+  "file": "stage4a.jwst.bin",
+  "encoding": "float64-le",
+  "bytes": 251592,
+  "sha256": "18fb901382fb61bb660f9e6a1ed7549f8343fefc254865ecc9f1da8c5cb292ec",
+  "arrays": {
+   "daily": {
+    "offset": 0,
+    "shape": [
+     1694,
+     3
+    ]
+   },
+   "interp": {
+    "offset": 5082,
+    "shape": [
+     6773,
+     3
+    ]
+   },
+   "tenmin": {
+    "offset": 25401,
+    "shape": [
+     2016,
+     3
+    ]
+   }
+  }
+ }
+}

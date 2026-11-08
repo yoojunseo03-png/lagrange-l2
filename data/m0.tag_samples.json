@@ -1,0 +1,146 @@
+{
+ "schema_version": "1.0.0",
+ "id": "m0.tag_samples",
+ "kind": "scalars",
+ "title": {
+  "ko": "꼬리표 시험 숫자 (M0)",
+  "en": "Tag test numbers (M0)"
+ },
+ "provenance": {
+  "stage": "7",
+  "model": "-",
+  "model_ko": "-",
+  "verification": {
+   "tag": "impl",
+   "detail": "implementation",
+   "no": 1,
+   "tag_ko": "구현 검증",
+   "detail_ko": "구현"
+  },
+  "source": [
+   {
+    "file": "results/stage2.json",
+    "key": "평형점>L2>불안정방향_deg"
+   },
+   {
+    "file": "results/stage4d.json",
+    "key": "JWST_대조>비_모형/JWST>k_B"
+   },
+   {
+    "file": "results/stage5.json",
+    "key": "5-6_재구성>대표>내_모형_대표_k_B_km"
+   }
+  ],
+  "computed_by": "web_export.py",
+  "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+ },
+ "frame": null,
+ "time": null,
+ "items": [
+  {
+   "id": "l2_unstable_deg",
+   "value": -28.602025883026844,
+   "text": "-28.6020",
+   "unit": "°",
+   "label": {
+    "ko": "L2 불안정 방향 (x 축에서)",
+    "en": "L2 unstable direction (from x axis)"
+   },
+   "note": {
+    "ko": "CR3BP 고유벡터의 방향. 문헌값 28.6° (NTRS 20140007519) 와 크기 일치 — CR3BP 에서 계산하는 양이라 구현 검증 (정비 결정 U-2)",
+    "en": "Direction of the CR3BP eigenvector. Matches the published 28.6° (NTRS 20140007519) in magnitude — a CR3BP quantity, so implementation verification"
+   },
+   "provenance": {
+    "stage": "2",
+    "model": "CR3BP",
+    "model_ko": "원궤도 제한 삼체 문제",
+    "verification": {
+     "tag": "impl",
+     "detail": "literature",
+     "no": 2,
+     "tag_ko": "구현 검증",
+     "detail_ko": "문헌 이론값 대조"
+    },
+    "source": [
+     {
+      "file": "results/stage2.json",
+      "key": "평형점>L2>불안정방향_deg"
+     }
+    ],
+    "computed_by": "results/stage2.json",
+    "ref_commit": "bb08343",
+    "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+   }
+  },
+  {
+   "id": "dv_ratio_jwst_budget",
+   "value": 0.0976004398882348,
+   "text": "0.098",
+   "unit": "",
+   "label": {
+    "ko": "연간 Δv 대 JWST 예산 (비)",
+    "en": "Annual Δv vs JWST budget (ratio)"
+   },
+   "note": {
+    "ko": "4-D 모형의 연간 Δv (0.237 m/s) ÷ JWST 발사 전 예산 연 2.43 m/s. 예산은 실측이 아니다 — 외부 대조",
+    "en": "4-D model annual Δv (0.237 m/s) ÷ JWST pre-launch budget 2.43 m/s/yr. The budget is not a measurement — external comparison"
+   },
+   "provenance": {
+    "stage": "4-D",
+    "model": "M5S:k_B",
+    "model_ko": "실제 천체력 + 태양 복사압",
+    "verification": {
+     "tag": "external",
+     "detail": "external",
+     "no": 4,
+     "tag_ko": "외부 대조",
+     "detail_ko": "외부 대조"
+    },
+    "source": [
+     {
+      "file": "results/stage4d.json",
+      "key": "JWST_대조>비_모형/JWST>k_B"
+     }
+    ],
+    "computed_by": "results/stage4d.json",
+    "ref_commit": "0b32fab",
+    "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+   }
+  },
+  {
+   "id": "recon_5day_km",
+   "value": 3.8273741487035604,
+   "text": "3.83",
+   "unit": "km",
+   "label": {
+    "ko": "재구성 궤적과의 5 일 위치 차",
+    "en": "5-day position difference vs reconstructed trajectory"
+   },
+   "note": {
+    "ko": "JWST 재구성 (비행) 궤적과 내 모형의 5 일 끝 위치 차 (같은 구간 JPL 무분사 예측 1.03 km). 물리 검증 (재구성 비행 궤적)",
+    "en": "Position difference after 5 days between my model and the JWST reconstructed (as-flown) trajectory (JPL no-burn prediction: 1.03 km). Physical validation"
+   },
+   "provenance": {
+    "stage": "5",
+    "model": "M5+SRP(k_B)",
+    "model_ko": "실제 천체력 + 태양 복사압 (k_B)",
+    "verification": {
+     "tag": "physical",
+     "detail": "physical",
+     "no": 7,
+     "tag_ko": "물리 검증",
+     "detail_ko": "물리"
+    },
+    "source": [
+     {
+      "file": "results/stage5.json",
+      "key": "5-6_재구성>대표>내_모형_대표_k_B_km"
+     }
+    ],
+    "computed_by": "results/stage5.json",
+    "ref_commit": "2e8cc45",
+    "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+   }
+  }
+ ]
+}

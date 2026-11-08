@@ -1,0 +1,29 @@
+{
+ "name": "태양–지구달 L2 (Sun–Earth/Moon L2)",
+ "short_name": "L2",
+ "description": "7단계 3D 시각화 — 임시 아이콘",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#04060c",
+ "theme_color": "#04060c",
+ "icons": [
+  {
+   "src": "icons/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icons/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "icons/icon-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ],
+ "version": "0.0.0"
+}

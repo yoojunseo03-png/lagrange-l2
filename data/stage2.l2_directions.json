@@ -1,0 +1,117 @@
+{
+ "schema_version": "1.0.0",
+ "id": "stage2.l2_directions",
+ "kind": "vectors",
+ "title": {
+  "ko": "L2 불안정·안정 방향",
+  "en": "L2 unstable / stable directions"
+ },
+ "provenance": {
+  "stage": "2",
+  "model": "CR3BP",
+  "model_ko": "원궤도 제한 삼체 문제",
+  "verification": {
+   "tag": "impl",
+   "detail": "literature",
+   "no": 2,
+   "tag_ko": "구현 검증",
+   "detail_ko": "문헌 이론값 대조"
+  },
+  "source": [
+   {
+    "file": "results/stage2.json",
+    "key": "평형점>L2>불안정방향_deg"
+   }
+  ],
+  "computed_by": "results/stage2.json",
+  "ref_commit": "bb08343",
+  "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+ },
+ "frame": "rot_nd",
+ "time": null,
+ "origin": [
+  1.0100752000235915,
+  0.0,
+  0.0
+ ],
+ "items": [
+  {
+   "id": "unstable",
+   "angle_deg": -28.602025883026844,
+   "num": {
+    "id": "unstable_deg",
+    "value": -28.602025883026844,
+    "text": "-28.6020",
+    "unit": "°",
+    "label": {
+     "ko": "불안정 방향",
+     "en": "Unstable direction"
+    },
+    "note": {
+     "ko": "CR3BP 선형화의 불안정 고유벡터 (위치 성분) 방향. 문헌 28.6° (NTRS 20140007519) 와 크기 일치 — 문헌 이론값 대조 (구현 검증)",
+     "en": "Direction of the unstable eigenvector (position part) of the linearized CR3BP. Matches 28.6° (NTRS 20140007519) in magnitude — comparison with published theory (implementation verification)"
+    },
+    "provenance": {
+     "stage": "2",
+     "model": "CR3BP",
+     "model_ko": "원궤도 제한 삼체 문제",
+     "verification": {
+      "tag": "impl",
+      "detail": "literature",
+      "no": 2,
+      "tag_ko": "구현 검증",
+      "detail_ko": "문헌 이론값 대조"
+     },
+     "source": [
+      {
+       "file": "results/stage2.json",
+       "key": "평형점>L2>불안정방향_deg"
+      }
+     ],
+     "computed_by": "results/stage2.json",
+     "ref_commit": "bb08343",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   }
+  },
+  {
+   "id": "stable",
+   "angle_deg": 28.602025883026837,
+   "num": {
+    "id": "stable_deg",
+    "value": 28.602025883026837,
+    "text": "+28.6020",
+    "unit": "°",
+    "label": {
+     "ko": "안정 방향",
+     "en": "Stable direction"
+    },
+    "note": {
+     "ko": "안정 고유벡터 (위치 성분) 방향. 문헌값과 대조하지 않음 (구현)",
+     "en": "Direction of the stable eigenvector (position part). Not compared with literature (implementation)"
+    },
+    "provenance": {
+     "stage": "2",
+     "model": "CR3BP",
+     "model_ko": "원궤도 제한 삼체 문제",
+     "verification": {
+      "tag": "impl",
+      "detail": "implementation",
+      "no": 1,
+      "tag_ko": "구현 검증",
+      "detail_ko": "구현"
+     },
+     "source": [
+      {
+       "file": "results/stage2.json",
+       "key": "L2_고유벡터_기저>안정방향_deg"
+      }
+     ],
+     "computed_by": "results/stage2.json",
+     "ref_commit": "bb08343",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   }
+  }
+ ]
+}

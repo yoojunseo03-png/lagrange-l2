@@ -1,0 +1,1035 @@
+{
+ "schema_version": "1.0.0",
+ "id": "stage5.jwst",
+ "kind": "trajectory",
+ "title": {
+  "ko": "5단계 JWST 예측 두 층 (외부 대조 / 물리 검증)",
+  "en": "Stage 5 JWST predictions — two layers (external comparison / physical validation)"
+ },
+ "provenance": {
+  "stage": "5",
+  "model": "M5+SRP",
+  "model_ko": "실제 천체력 + 태양 복사압 (맞춘 k)",
+  "verification": {
+   "tag": "external",
+   "detail": "external",
+   "no": 4,
+   "tag_ko": "외부 대조",
+   "detail_ko": "외부 대조"
+  },
+  "source": [
+   {
+    "file": "results/stage5.json",
+    "key": "5-3_5-4_모형과_맞춤>시험"
+   },
+   {
+    "file": "results/stage5.json",
+    "key": "5-6_재구성"
+   }
+  ],
+  "computed_by": "stage5.run_job (같은 설정으로 다시 적분 — 날짜별 값이 stage5.json 과 비트 같음) + web_export.jwst_to_scene",
+  "ref_commit": "2e8cc45",
+  "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+ },
+ "frame": "rot_nd",
+ "time": null,
+ "axes": {
+  "days": [
+   0,
+   7,
+   14,
+   21,
+   28
+  ],
+  "km": [
+   0.3,
+   1.0,
+   10.0,
+   100.0
+  ],
+  "km_text": [
+   "0.3",
+   "1",
+   "10",
+   "100"
+  ],
+  "source": "results/stage5.json>설정>유효기간_기준_km (축 눈금 km) · 일 눈금 0·7·14·21·28 (그리기)"
+ },
+ "layers": {
+  "ext": {
+   "verification": {
+    "tag": "external",
+    "detail": "external",
+    "no": 4,
+    "tag_ko": "외부 대조",
+    "detail_ko": "외부 대조"
+   },
+   "title": {
+    "ko": "JPL 무분사 예측과의 비교",
+    "en": "Comparison with JPL's no-burn prediction"
+   },
+   "note": {
+    "ko": "내 모형 (실제 천체력 + 태양 복사압, 다른 사본에 맞춘 k) 의 28 일 예측과 JPL 무분사 예측 (운용 모델의 예측) 의 위치 차. 실측이 아니다 — 외부 대조.",
+    "en": "Position difference between my model's 28-day prediction (real ephemeris + SRP, k fitted to another copy) and JPL's no-burn prediction (an operational-model prediction). Not a measurement — external comparison."
+   },
+   "windows": {
+    "A": {
+     "array": "jpl_A",
+     "copy": "01U — 9/27 웹 사본, 1일 간격 (data/horizons_manual, 읽기 전용)",
+     "start": "2026-09-22 00:00:00",
+     "end": "2026-10-18 00:00:00"
+    },
+    "B": {
+     "array": "jpl_B",
+     "copy": "03U — 10-08 받음, 10분 간격",
+     "start": "2026-10-05 12:00:00",
+     "end": "2026-11-01 23:00:00"
+    },
+    "C": {
+     "array": "jpl_C",
+     "copy": "02U — 10-07 받음, 10분 간격 (:01 격자)",
+     "start": "2026-09-28 20:11:00",
+     "end": "2026-10-25 22:51:00"
+    }
+   },
+   "curves": [
+    {
+     "id": "AB",
+     "array_days": "days_AB",
+     "array_km": "km_AB",
+     "color": "#f0a23b",
+     "dashed": false,
+     "label": {
+      "ko": "A→B (k_A → 창 B)",
+      "en": "A→B (k_A → window B)"
+     },
+     "marks": [
+      {
+       "day": 1.0,
+       "km": 0.05847574687847203
+      },
+      {
+       "day": 3.0,
+       "km": 0.3317956377580639
+      },
+      {
+       "day": 7.0,
+       "km": 1.6315882083109186
+      },
+      {
+       "day": 14.0,
+       "km": 5.0501647436660955
+      },
+      {
+       "day": 21.0,
+       "km": 10.741495329686176
+      },
+      {
+       "day": 27.0,
+       "km": 18.209240807937597
+      },
+      {
+       "day": 27.458333333333332,
+       "km": 19.009190650406786
+      }
+     ],
+     "window": "B",
+     "k_from": "A",
+     "k": 0.04405902545929874,
+     "array_pos": "mine_AB",
+     "array_jpl": "jpl_B"
+    },
+    {
+     "id": "BA",
+     "array_days": "days_BA",
+     "array_km": "km_BA",
+     "color": "#ffcf87",
+     "dashed": false,
+     "label": {
+      "ko": "B→A (k_B → 창 A)",
+      "en": "B→A (k_B → window A)"
+     },
+     "marks": [
+      {
+       "day": 1.0,
+       "km": 0.1287782394372719
+      },
+      {
+       "day": 3.0,
+       "km": 1.132220677188697
+      },
+      {
+       "day": 7.0,
+       "km": 4.3581981413627995
+      },
+      {
+       "day": 14.0,
+       "km": 10.79565763268561
+      },
+      {
+       "day": 21.0,
+       "km": 16.642426818266813
+      },
+      {
+       "day": 26.0,
+       "km": 20.28354594056637
+      }
+     ],
+     "window": "A",
+     "k_from": "B",
+     "k": 0.045278283883313716,
+     "array_pos": "mine_BA",
+     "array_jpl": "jpl_A"
+    },
+    {
+     "id": "AC",
+     "array_days": "days_AC",
+     "array_km": "km_AC",
+     "color": "#d9822b",
+     "dashed": false,
+     "label": {
+      "ko": "A→C (k_A → 창 C)",
+      "en": "A→C (k_A → window C)"
+     },
+     "marks": [
+      {
+       "day": 1.0,
+       "km": 0.07814998108001035
+      },
+      {
+       "day": 3.0,
+       "km": 0.5878763361460788
+      },
+      {
+       "day": 7.0,
+       "km": 3.8112428776419716
+      },
+      {
+       "day": 14.0,
+       "km": 10.911393144535007
+      },
+      {
+       "day": 21.0,
+       "km": 18.73467163502795
+      },
+      {
+       "day": 27.0,
+       "km": 26.884540409160596
+      },
+      {
+       "day": 27.11111111111111,
+       "km": 27.04389997360385
+      }
+     ],
+     "window": "C",
+     "k_from": "A",
+     "k": 0.04405902545929874,
+     "array_pos": "mine_AC",
+     "array_jpl": "jpl_C"
+    },
+    {
+     "id": "BC",
+     "array_days": "days_BC",
+     "array_km": "km_BC",
+     "color": "#ffe2b8",
+     "dashed": false,
+     "label": {
+      "ko": "B→C (k_B → 창 C)",
+      "en": "B→C (k_B → window C)"
+     },
+     "marks": [
+      {
+       "day": 1.0,
+       "km": 0.06916505568449909
+      },
+      {
+       "day": 3.0,
+       "km": 0.6133414030920707
+      },
+      {
+       "day": 7.0,
+       "km": 3.8776156589821418
+      },
+      {
+       "day": 14.0,
+       "km": 10.537686143164168
+      },
+      {
+       "day": 21.0,
+       "km": 16.56234184931549
+      },
+      {
+       "day": 27.0,
+       "km": 21.127133900152028
+      },
+      {
+       "day": 27.11111111111111,
+       "km": 21.203753858038624
+      }
+     ],
+     "window": "C",
+     "k_from": "B",
+     "k": 0.045278283883313716,
+     "array_pos": "mine_BC",
+     "array_jpl": "jpl_C"
+    }
+   ],
+   "items": [
+    {
+     "id": "jwst_err_range",
+     "value": [
+      19.009190650406786,
+      27.04389997360385
+     ],
+     "text": "19.0 ~ 27.0",
+     "unit": "km",
+     "label": {
+      "ko": "교차 예측 끝 위치 차 (대표 4 개)",
+      "en": "Cross-prediction end position difference (4 representative)"
+     },
+     "note": {
+      "ko": "다른 사본에 맞춘 k 로 예측한 28 일 창 끝 위치 차의 범위 (A→B·B→A·A→C·B→C, 창 규칙 개정 2). 외부 대조 (실측 아님)",
+      "en": "Range of end position differences of 28-day windows predicted with k fitted to another copy (A→B, B→A, A→C, B→C; window rule rev. 2). External comparison (not a measurement)"
+     },
+     "provenance": {
+      "stage": "5",
+      "model": "M5+SRP",
+      "model_ko": "실제 천체력 + 태양 복사압 (맞춘 k)",
+      "verification": {
+       "tag": "external",
+       "detail": "external",
+       "no": 4,
+       "tag_ko": "외부 대조",
+       "detail_ko": "외부 대조"
+      },
+      "source": [
+       {
+        "file": "results/stage5.json",
+        "key": "5-3_5-4_모형과_맞춤>시험>A→B>끝_|Δr|_km"
+       },
+       {
+        "file": "results/stage5.json",
+        "key": "5-3_5-4_모형과_맞춤>시험>B→A>끝_|Δr|_km"
+       },
+       {
+        "file": "results/stage5.json",
+        "key": "5-3_5-4_모형과_맞춤>시험>A→C>끝_|Δr|_km"
+       },
+       {
+        "file": "results/stage5.json",
+        "key": "5-3_5-4_모형과_맞춤>시험>B→C>끝_|Δr|_km"
+       }
+      ],
+      "computed_by": "results/stage5.json",
+      "ref_commit": "2e8cc45",
+      "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     }
+    },
+    {
+     "id": "jwst_err_sens",
+     "value": [
+      18.639090296652526,
+      27.04389997360385
+     ],
+     "text": "18.6 ~ 27.0",
+     "unit": "km",
+     "label": {
+      "ko": "같은 값의 시작 민감도 범위",
+      "en": "Start-time sensitivity range of the same"
+     },
+     "note": {
+      "ko": "규칙 시작 대신 +1·3·6 시간에 시작한 교차 예측 (다른 사건을 새로 넘지 않을 때만) 을 더한 범위 (5-7)",
+      "en": "Range including cross-predictions started +1, 3, 6 hours after the rule start (only when no new event is crossed) (5-7)"
+     },
+     "provenance": {
+      "stage": "5",
+      "model": "M5+SRP",
+      "model_ko": "실제 천체력 + 태양 복사압 (맞춘 k)",
+      "verification": {
+       "tag": "external",
+       "detail": "external",
+       "no": 4,
+       "tag_ko": "외부 대조",
+       "detail_ko": "외부 대조"
+      },
+      "source": [
+       {
+        "file": "results/stage5.json",
+        "key": "5-3_5-4_모형과_맞춤>시험 (대표 4 개 끝_|Δr|_km)"
+       },
+       {
+        "file": "results/stage5.json",
+        "key": "5-7_시작민감도>표 (…→…_km)"
+       }
+      ],
+      "computed_by": "results/stage5.json",
+      "ref_commit": "2e8cc45",
+      "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     }
+    },
+    {
+     "id": "jwst_err_AB",
+     "value": 19.009190650406786,
+     "text": "19.0",
+     "unit": "km",
+     "label": {
+      "ko": "A→B 끝 위치 차 (27.5 일)",
+      "en": "A→B end position difference (27.5 d)"
+     },
+     "note": {
+      "ko": "사본 A 에 맞춘 k = 0.04406 m²/kg 로 창 B (10-05 12:00 ~ 11-01 23:00, 03U) 를 예측한 끝 위치와 JPL 무분사 예측의 차. JPL 운용 모델과의 외부 대조 (실측 아님)",
+      "en": "Difference between my prediction of window B (10-05 12:00 ~ 11-01 23:00) with k = 0.04406 m²/kg fitted to copy A and JPL's no-burn prediction at the end. External comparison with JPL's operational model (not a measurement)"
+     },
+     "provenance": {
+      "stage": "5",
+      "model": "M5+SRP",
+      "model_ko": "실제 천체력 + 태양 복사압 (맞춘 k)",
+      "verification": {
+       "tag": "external",
+       "detail": "external",
+       "no": 4,
+       "tag_ko": "외부 대조",
+       "detail_ko": "외부 대조"
+      },
+      "source": [
+       {
+        "file": "results/stage5.json",
+        "key": "5-3_5-4_모형과_맞춤>시험>A→B>끝_|Δr|_km"
+       }
+      ],
+      "computed_by": "results/stage5.json",
+      "ref_commit": "2e8cc45",
+      "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     }
+    },
+    {
+     "id": "jwst_err_BA",
+     "value": 20.28354594056637,
+     "text": "20.3",
+     "unit": "km",
+     "label": {
+      "ko": "B→A 끝 위치 차 (26.0 일)",
+      "en": "B→A end position difference (26.0 d)"
+     },
+     "note": {
+      "ko": "사본 B 에 맞춘 k = 0.04528 m²/kg 로 창 A (09-22 00:00 ~ 10-18 00:00, 01U) 를 예측한 끝 위치와 JPL 무분사 예측의 차. JPL 운용 모델과의 외부 대조 (실측 아님)",
+      "en": "Difference between my prediction of window A (09-22 00:00 ~ 10-18 00:00) with k = 0.04528 m²/kg fitted to copy B and JPL's no-burn prediction at the end. External comparison with JPL's operational model (not a measurement)"
+     },
+     "provenance": {
+      "stage": "5",
+      "model": "M5+SRP",
+      "model_ko": "실제 천체력 + 태양 복사압 (맞춘 k)",
+      "verification": {
+       "tag": "external",
+       "detail": "external",
+       "no": 4,
+       "tag_ko": "외부 대조",
+       "detail_ko": "외부 대조"
+      },
+      "source": [
+       {
+        "file": "results/stage5.json",
+        "key": "5-3_5-4_모형과_맞춤>시험>B→A>끝_|Δr|_km"
+       }
+      ],
+      "computed_by": "results/stage5.json",
+      "ref_commit": "2e8cc45",
+      "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     }
+    },
+    {
+     "id": "jwst_err_AC",
+     "value": 27.04389997360385,
+     "text": "27.0",
+     "unit": "km",
+     "label": {
+      "ko": "A→C 끝 위치 차 (27.1 일)",
+      "en": "A→C end position difference (27.1 d)"
+     },
+     "note": {
+      "ko": "사본 A 에 맞춘 k = 0.04406 m²/kg 로 창 C (09-28 20:11 ~ 10-25 22:51, 02U) 를 예측한 끝 위치와 JPL 무분사 예측의 차. JPL 운용 모델과의 외부 대조 (실측 아님)",
+      "en": "Difference between my prediction of window C (09-28 20:11 ~ 10-25 22:51) with k = 0.04406 m²/kg fitted to copy A and JPL's no-burn prediction at the end. External comparison with JPL's operational model (not a measurement)"
+     },
+     "provenance": {
+      "stage": "5",
+      "model": "M5+SRP",
+      "model_ko": "실제 천체력 + 태양 복사압 (맞춘 k)",
+      "verification": {
+       "tag": "external",
+       "detail": "external",
+       "no": 4,
+       "tag_ko": "외부 대조",
+       "detail_ko": "외부 대조"
+      },
+      "source": [
+       {
+        "file": "results/stage5.json",
+        "key": "5-3_5-4_모형과_맞춤>시험>A→C>끝_|Δr|_km"
+       }
+      ],
+      "computed_by": "results/stage5.json",
+      "ref_commit": "2e8cc45",
+      "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     }
+    },
+    {
+     "id": "jwst_err_BC",
+     "value": 21.203753858038624,
+     "text": "21.2",
+     "unit": "km",
+     "label": {
+      "ko": "B→C 끝 위치 차 (27.1 일)",
+      "en": "B→C end position difference (27.1 d)"
+     },
+     "note": {
+      "ko": "사본 B 에 맞춘 k = 0.04528 m²/kg 로 창 C (09-28 20:11 ~ 10-25 22:51, 02U) 를 예측한 끝 위치와 JPL 무분사 예측의 차. JPL 운용 모델과의 외부 대조 (실측 아님)",
+      "en": "Difference between my prediction of window C (09-28 20:11 ~ 10-25 22:51) with k = 0.04528 m²/kg fitted to copy B and JPL's no-burn prediction at the end. External comparison with JPL's operational model (not a measurement)"
+     },
+     "provenance": {
+      "stage": "5",
+      "model": "M5+SRP",
+      "model_ko": "실제 천체력 + 태양 복사압 (맞춘 k)",
+      "verification": {
+       "tag": "external",
+       "detail": "external",
+       "no": 4,
+       "tag_ko": "외부 대조",
+       "detail_ko": "외부 대조"
+      },
+      "source": [
+       {
+        "file": "results/stage5.json",
+        "key": "5-3_5-4_모형과_맞춤>시험>B→C>끝_|Δr|_km"
+       }
+      ],
+      "computed_by": "results/stage5.json",
+      "ref_commit": "2e8cc45",
+      "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     }
+    }
+   ]
+  },
+  "phys": {
+   "verification": {
+    "tag": "physical",
+    "detail": "physical",
+    "no": 7,
+    "tag_ko": "물리 검증",
+    "detail_ko": "물리"
+   },
+   "title": {
+    "ko": "재구성 궤적과의 비교",
+    "en": "Comparison with the reconstructed trajectory"
+   },
+   "note": {
+    "ko": "JWST 재구성 (비행) 궤적 (03U, 9/21 ~ 9/28) 을 기준으로 내 모형과 JPL 무분사 예측의 위치 차. 대표 = 5 일 (9/26 00:00, 창 규칙 개정 2), 6·7 일은 규칙 밖 참고 (띠).",
+    "en": "Position differences of my model and JPL's no-burn prediction from JWST's reconstructed (as-flown) trajectory (03U, 9/21–9/28). Representative = 5 d (9/26 00:00, window rule rev. 2); 6 and 7 d are outside the rule (band)."
+   },
+   "window": {
+    "start": "2026-09-21 00:00:00",
+    "end": "2026-09-28 00:00:00",
+    "rep_end": "2026-09-26 00:00:00",
+    "copy": "03U — 10-08 받음, 10분 간격"
+   },
+   "outside_from_day": 5.0,
+   "outside_to_day": 7.0,
+   "curves": [
+    {
+     "id": "R",
+     "array_days": "days_R",
+     "array_km": "km_R",
+     "color": "#3fca7f",
+     "dashed": false,
+     "label": {
+      "ko": "내 모형 (k_B)",
+      "en": "My model (k_B)"
+     },
+     "k": 0.045278283883313716,
+     "marks": [
+      {
+       "day": 1.0,
+       "km": 0.2048579575321332
+      },
+      {
+       "day": 3.0,
+       "km": 1.613294400794808
+      },
+      {
+       "day": 5.0,
+       "km": 3.8273741487035604
+      },
+      {
+       "day": 6.0,
+       "km": 5.037464787107482
+      },
+      {
+       "day": 7.0,
+       "km": 6.335618218282762
+      }
+     ]
+    },
+    {
+     "id": "R_jpl",
+     "array_days": "days_R_jpl",
+     "array_km": "km_R_jpl",
+     "color": "#a5efc4",
+     "dashed": true,
+     "label": {
+      "ko": "JPL 무분사 예측 (01U)",
+      "en": "JPL no-burn prediction (01U)"
+     },
+     "marks": [
+      {
+       "day": 0.0,
+       "km": 0.34713763346962345
+      },
+      {
+       "day": 1.0,
+       "km": 0.6596488053563
+      },
+      {
+       "day": 2.0,
+       "km": 0.7427627118867441
+      },
+      {
+       "day": 3.0,
+       "km": 0.8336590722127164
+      },
+      {
+       "day": 4.0,
+       "km": 0.931171106189393
+      },
+      {
+       "day": 5.0,
+       "km": 1.0278618971849702
+      },
+      {
+       "day": 6.0,
+       "km": 1.1205684880836626
+      },
+      {
+       "day": 7.0,
+       "km": 1.3727898920289412
+      }
+     ]
+    }
+   ],
+   "arrays_pos": {
+    "recon": "recon_R",
+    "mine": "mine_R",
+    "jpl": "jpl01U_R"
+   },
+   "items": [
+    {
+     "id": "jwst_err_R5",
+     "value": 3.8273741487035604,
+     "text": "3.83",
+     "unit": "km",
+     "label": {
+      "ko": "5 일 위치 차 — 내 모형 (k_B, 대표)",
+      "en": "5-day position difference — my model (k_B, representative)"
+     },
+     "note": {
+      "ko": "03U 재구성 (비행) 궤적과 내 모형 (사본 B 에 맞춘 k — 재구성 구간과 겹치지 않음) 의 9/26 00:00 위치 차. 물리 검증 (재구성 비행 궤적)",
+      "en": "Position difference at 9/26 00:00 between the 03U reconstructed (as-flown) trajectory and my model (k fitted to copy B, which does not overlap the reconstruction). Physical validation"
+     },
+     "provenance": {
+      "stage": "5",
+      "model": "M5+SRP",
+      "model_ko": "실제 천체력 + 태양 복사압 (맞춘 k)",
+      "verification": {
+       "tag": "physical",
+       "detail": "physical",
+       "no": 7,
+       "tag_ko": "물리 검증",
+       "detail_ko": "물리"
+      },
+      "source": [
+       {
+        "file": "results/stage5.json",
+        "key": "5-6_재구성>대표>내_모형_대표_k_B_km"
+       }
+      ],
+      "computed_by": "results/stage5.json",
+      "ref_commit": "2e8cc45",
+      "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     }
+    },
+    {
+     "id": "jwst_err_R5_jpl",
+     "value": 1.0278618971849702,
+     "text": "1.03",
+     "unit": "km",
+     "label": {
+      "ko": "5 일 위치 차 — JPL 무분사 예측 (01U)",
+      "en": "5-day position difference — JPL no-burn prediction (01U)"
+     },
+     "note": {
+      "ko": "같은 구간에서 JPL 의 01U 무분사 예측과 03U 재구성의 차 (비교 기준선)",
+      "en": "Difference between JPL's 01U no-burn prediction and the 03U reconstruction over the same span (baseline)"
+     },
+     "provenance": {
+      "stage": "5",
+      "model": "M5+SRP",
+      "model_ko": "실제 천체력 + 태양 복사압 (맞춘 k)",
+      "verification": {
+       "tag": "physical",
+       "detail": "physical",
+       "no": 7,
+       "tag_ko": "물리 검증",
+       "detail_ko": "물리"
+      },
+      "source": [
+       {
+        "file": "results/stage5.json",
+        "key": "5-6_재구성>대표>JPL_01U_예측_km"
+       }
+      ],
+      "computed_by": "results/stage5.json",
+      "ref_commit": "2e8cc45",
+      "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     }
+    },
+    {
+     "id": "jwst_err_R5_sens",
+     "value": [
+      3.580995940634816,
+      3.861255447716657
+     ],
+     "text": "3.58 ~ 3.86",
+     "unit": "km",
+     "label": {
+      "ko": "5 일 내 모형 — 시작 민감도 범위",
+      "en": "5-day my model — start-time sensitivity range"
+     },
+     "note": {
+      "ko": "대표 (규칙 시작) 와 R 창 시작 +1·3·6 시간 (k_B 그대로)·창 B 시작 +1·3 시간으로 다시 맞춘 k_B' 의 9/26 00:00 위치 차의 범위 (5-7). 물리 검증 (재구성 비행 궤적)",
+      "en": "Range of the 9/26 00:00 position difference over the representative (rule start), window R started +1, 3, 6 h (same k_B) and k_B' refitted with window B started +1, 3 h (5-7). Physical validation (reconstructed as-flown trajectory)"
+     },
+     "provenance": {
+      "stage": "5",
+      "model": "M5+SRP",
+      "model_ko": "실제 천체력 + 태양 복사압 (맞춘 k)",
+      "verification": {
+       "tag": "physical",
+       "detail": "physical",
+       "no": 7,
+       "tag_ko": "물리 검증",
+       "detail_ko": "물리"
+      },
+      "source": [
+       {
+        "file": "results/stage5.json",
+        "key": "5-6_재구성>대표>내_모형_대표_k_B_km"
+       },
+       {
+        "file": "results/stage5.json",
+        "key": "5-7_시작민감도>표 (…>재구성_k_B…_km>2026-09-26 00:00:00)"
+       }
+      ],
+      "computed_by": "results/stage5.json",
+      "ref_commit": "2e8cc45",
+      "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     }
+    },
+    {
+     "id": "jwst_err_R6",
+     "value": 5.037464787107482,
+     "text": "5.04",
+     "unit": "km",
+     "label": {
+      "ko": "6 일 — 내 모형 — 규칙 밖 참고",
+      "en": "6 d — my model — outside the rule (reference)"
+     },
+     "note": {
+      "ko": "9/27 00:00. 9/27 00:05 이음새의 퍼진 구간 (09-26 23:40 ~) 안 — 개정 2 규칙 밖",
+      "en": "9/27 00:00. Inside the spread of the 9/27 00:05 seam — outside window rule rev. 2"
+     },
+     "provenance": {
+      "stage": "5",
+      "model": "M5+SRP",
+      "model_ko": "실제 천체력 + 태양 복사압 (맞춘 k)",
+      "verification": {
+       "tag": "physical",
+       "detail": "physical",
+       "no": 7,
+       "tag_ko": "물리 검증",
+       "detail_ko": "물리"
+      },
+      "source": [
+       {
+        "file": "results/stage5.json",
+        "key": "5-6_재구성>대표>참고_6일>내_모형_k_B_km"
+       }
+      ],
+      "computed_by": "results/stage5.json",
+      "ref_commit": "2e8cc45",
+      "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     }
+    },
+    {
+     "id": "jwst_err_R6_jpl",
+     "value": 1.1205684880836626,
+     "text": "1.12",
+     "unit": "km",
+     "label": {
+      "ko": "6 일 — JPL — 규칙 밖 참고",
+      "en": "6 d — JPL — outside the rule (reference)"
+     },
+     "note": {
+      "ko": "9/27 00:00, JPL 01U 예측. 규칙 밖 참고",
+      "en": "9/27 00:00, JPL 01U prediction. Outside the rule (reference)"
+     },
+     "provenance": {
+      "stage": "5",
+      "model": "M5+SRP",
+      "model_ko": "실제 천체력 + 태양 복사압 (맞춘 k)",
+      "verification": {
+       "tag": "physical",
+       "detail": "physical",
+       "no": 7,
+       "tag_ko": "물리 검증",
+       "detail_ko": "물리"
+      },
+      "source": [
+       {
+        "file": "results/stage5.json",
+        "key": "5-6_재구성>대표>참고_6일>JPL_01U_예측_km"
+       }
+      ],
+      "computed_by": "results/stage5.json",
+      "ref_commit": "2e8cc45",
+      "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     }
+    },
+    {
+     "id": "jwst_err_R7",
+     "value": 6.335618218282762,
+     "text": "6.34",
+     "unit": "km",
+     "label": {
+      "ko": "7 일 — 내 모형 — 규칙 밖 참고",
+      "en": "7 d — my model — outside the rule (reference)"
+     },
+     "note": {
+      "ko": "9/28 00:00 (R 창 끝). 9/27 00:05 재구성 이음매 0.18 km 포함",
+      "en": "9/28 00:00 (end of window R). Includes the 0.18 km reconstruction seam at 9/27 00:05"
+     },
+     "provenance": {
+      "stage": "5",
+      "model": "M5+SRP",
+      "model_ko": "실제 천체력 + 태양 복사압 (맞춘 k)",
+      "verification": {
+       "tag": "physical",
+       "detail": "physical",
+       "no": 7,
+       "tag_ko": "물리 검증",
+       "detail_ko": "물리"
+      },
+      "source": [
+       {
+        "file": "results/stage5.json",
+        "key": "5-6_재구성>대표>참고_7일>내_모형_k_B_km"
+       }
+      ],
+      "computed_by": "results/stage5.json",
+      "ref_commit": "2e8cc45",
+      "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     }
+    },
+    {
+     "id": "jwst_err_R7_jpl",
+     "value": 1.3727898920289412,
+     "text": "1.37",
+     "unit": "km",
+     "label": {
+      "ko": "7 일 — JPL — 규칙 밖 참고",
+      "en": "7 d — JPL — outside the rule (reference)"
+     },
+     "note": {
+      "ko": "9/28 00:00, JPL 01U 예측. 규칙 밖 참고",
+      "en": "9/28 00:00, JPL 01U prediction. Outside the rule (reference)"
+     },
+     "provenance": {
+      "stage": "5",
+      "model": "M5+SRP",
+      "model_ko": "실제 천체력 + 태양 복사압 (맞춘 k)",
+      "verification": {
+       "tag": "physical",
+       "detail": "physical",
+       "no": 7,
+       "tag_ko": "물리 검증",
+       "detail_ko": "물리"
+      },
+      "source": [
+       {
+        "file": "results/stage5.json",
+        "key": "5-6_재구성>대표>참고_7일>JPL_01U_예측_km"
+       }
+      ],
+      "computed_by": "results/stage5.json",
+      "ref_commit": "2e8cc45",
+      "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     }
+    }
+   ]
+  }
+ },
+ "same_as_json": {
+  "A→B": true,
+  "B→A": true,
+  "A→C": true,
+  "B→C": true,
+  "R": true
+ },
+ "binary": {
+  "file": "stage5.jwst.bin",
+  "encoding": "float64-le",
+  "bytes": 122912,
+  "sha256": "600b0ca0c303b522ae48d5492867f0374e43dace3727d77836b0c8ac76d1de92",
+  "arrays": {
+   "jpl_A": {
+    "offset": 0,
+    "shape": [
+     27,
+     3
+    ]
+   },
+   "jpl_B": {
+    "offset": 81,
+    "shape": [
+     660,
+     3
+    ]
+   },
+   "jpl_C": {
+    "offset": 2061,
+    "shape": [
+     652,
+     3
+    ]
+   },
+   "mine_AB": {
+    "offset": 4017,
+    "shape": [
+     660,
+     3
+    ]
+   },
+   "days_AB": {
+    "offset": 5997,
+    "shape": [
+     660
+    ]
+   },
+   "km_AB": {
+    "offset": 6657,
+    "shape": [
+     660
+    ]
+   },
+   "mine_BA": {
+    "offset": 7317,
+    "shape": [
+     27,
+     3
+    ]
+   },
+   "days_BA": {
+    "offset": 7398,
+    "shape": [
+     27
+    ]
+   },
+   "km_BA": {
+    "offset": 7425,
+    "shape": [
+     27
+    ]
+   },
+   "mine_AC": {
+    "offset": 7452,
+    "shape": [
+     652,
+     3
+    ]
+   },
+   "days_AC": {
+    "offset": 9408,
+    "shape": [
+     652
+    ]
+   },
+   "km_AC": {
+    "offset": 10060,
+    "shape": [
+     652
+    ]
+   },
+   "mine_BC": {
+    "offset": 10712,
+    "shape": [
+     652,
+     3
+    ]
+   },
+   "days_BC": {
+    "offset": 12668,
+    "shape": [
+     652
+    ]
+   },
+   "km_BC": {
+    "offset": 13320,
+    "shape": [
+     652
+    ]
+   },
+   "recon_R": {
+    "offset": 13972,
+    "shape": [
+     169,
+     3
+    ]
+   },
+   "mine_R": {
+    "offset": 14479,
+    "shape": [
+     169,
+     3
+    ]
+   },
+   "days_R": {
+    "offset": 14986,
+    "shape": [
+     169
+    ]
+   },
+   "km_R": {
+    "offset": 15155,
+    "shape": [
+     169
+    ]
+   },
+   "jpl01U_R": {
+    "offset": 15324,
+    "shape": [
+     8,
+     3
+    ]
+   },
+   "days_R_jpl": {
+    "offset": 15348,
+    "shape": [
+     8
+    ]
+   },
+   "km_R_jpl": {
+    "offset": 15356,
+    "shape": [
+     8
+    ]
+   }
+  }
+ }
+}

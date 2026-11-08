@@ -1,0 +1,450 @@
+{
+ "schema_version": "1.0.0",
+ "id": "stage3b.escape_samples",
+ "kind": "trajectory",
+ "title": {
+  "ko": "3-B 이탈 궤적 (e_u* 부호별 3 개)",
+  "en": "3-B escape trajectories (3 per e_u* sign)"
+ },
+ "provenance": {
+  "stage": "3-B",
+  "model": "CR3BP",
+  "model_ko": "원궤도 제한 삼체 문제",
+  "verification": {
+   "tag": "impl",
+   "detail": "implementation",
+   "no": 1,
+   "tag_ko": "구현 검증",
+   "detail_ko": "구현"
+  },
+  "source": [
+   {
+    "file": "results/stage3_scan.csv",
+    "key": "고른 번호의 초기 상태"
+   }
+  ],
+  "computed_by": "src/web_export.escape_trajectory (= escape_scan.integrate_one + 조밀 출력)",
+  "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+ },
+ "frame": "rot_nd",
+ "time": null,
+ "selection": "e_u* 부호마다 |e_u*|/γ 가 1e-9·1e-7·1e-5 에 (로그로) 가장 가까운 주 표본 (0.316γ 이탈, 잡음 지배 24 개 제외) — 고르는 규칙은 설계 11-1 결정 대기 (임시)",
+ "items": [
+  {
+   "번호": 27813,
+   "eu_star_gamma": 9.999177235200514e-10,
+   "eu_gamma": 9.65535998716951e-10,
+   "direction_316": 1,
+   "cross_days_csv": [
+    322.82447972254334,
+    350.1787805118358,
+    377.25849254271355,
+    404.35567223352075,
+    431.7983972130611,
+    460.3119669191289
+   ],
+   "cross_days_replay": [
+    322.82447972254334,
+    350.1787805118358,
+    377.25849254271355,
+    404.35567223352075,
+    431.7983972130611,
+    460.3119669191289
+   ],
+   "array": "pos_27813",
+   "t316": {
+    "id": "t316_27813",
+    "value": 460.3119669191289,
+    "text": "460.3",
+    "unit": {
+     "ko": "일",
+     "en": "d"
+    },
+    "label": {
+     "ko": "0.316γ 이탈 시각 (번호 27813, e_u* +)",
+     "en": "Escape time at 0.316γ (no. 27813, e_u* +)"
+    },
+    "note": {
+     "ko": "3-B 스캔 CSV 의 값 (적분: δ 변수 DOP853 rtol 1e-12, atol 1e-18). 방향 바깥쪽",
+     "en": "Value in the 3-B scan CSV (δ variables, DOP853 rtol 1e-12, atol 1e-18). Direction: outward"
+    },
+    "provenance": {
+     "stage": "3-B",
+     "model": "CR3BP",
+     "model_ko": "원궤도 제한 삼체 문제",
+     "verification": {
+      "tag": "impl",
+      "detail": "implementation",
+      "no": 1,
+      "tag_ko": "구현 검증",
+      "detail_ko": "구현"
+     },
+     "source": [
+      {
+       "file": "results/stage3_scan.csv",
+       "key": "번호 27813, 열 t_0.316"
+      }
+     ],
+     "computed_by": "stage3b.py — CSV sha256 85a18cfd3340… (results/stage3_scan.json)",
+     "ref_commit": "91cd77e",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   }
+  },
+  {
+   "번호": 14508,
+   "eu_star_gamma": 1.0003538076833063e-07,
+   "eu_gamma": 9.975663444479084e-08,
+   "direction_316": 1,
+   "cross_days_csv": [
+    215.57532837543465,
+    242.55645601848326,
+    269.4908168381061,
+    296.57176585546216,
+    324.0232532370265,
+    352.5418006677959
+   ],
+   "cross_days_replay": [
+    215.57532837543465,
+    242.55645601848326,
+    269.4908168381061,
+    296.57176585546216,
+    324.0232532370265,
+    352.5418006677959
+   ],
+   "array": "pos_14508",
+   "t316": {
+    "id": "t316_14508",
+    "value": 352.5418006677959,
+    "text": "352.5",
+    "unit": {
+     "ko": "일",
+     "en": "d"
+    },
+    "label": {
+     "ko": "0.316γ 이탈 시각 (번호 14508, e_u* +)",
+     "en": "Escape time at 0.316γ (no. 14508, e_u* +)"
+    },
+    "note": {
+     "ko": "3-B 스캔 CSV 의 값 (적분: δ 변수 DOP853 rtol 1e-12, atol 1e-18). 방향 바깥쪽",
+     "en": "Value in the 3-B scan CSV (δ variables, DOP853 rtol 1e-12, atol 1e-18). Direction: outward"
+    },
+    "provenance": {
+     "stage": "3-B",
+     "model": "CR3BP",
+     "model_ko": "원궤도 제한 삼체 문제",
+     "verification": {
+      "tag": "impl",
+      "detail": "implementation",
+      "no": 1,
+      "tag_ko": "구현 검증",
+      "detail_ko": "구현"
+     },
+     "source": [
+      {
+       "file": "results/stage3_scan.csv",
+       "key": "번호 14508, 열 t_0.316"
+      }
+     ],
+     "computed_by": "stage3b.py — CSV sha256 85a18cfd3340… (results/stage3_scan.json)",
+     "ref_commit": "91cd77e",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   }
+  },
+  {
+   "번호": 18706,
+   "eu_star_gamma": 1.000204714456197e-05,
+   "eu_gamma": 1.0001443003443326e-05,
+   "direction_316": 1,
+   "cross_days_csv": [
+    107.74775006843683,
+    134.70674914072734,
+    161.70652842867855,
+    188.8148338927048,
+    216.2698654477031,
+    244.78693945728838
+   ],
+   "cross_days_replay": [
+    107.74775006843683,
+    134.70674914072734,
+    161.70652842867855,
+    188.8148338927048,
+    216.2698654477031,
+    244.78693945728838
+   ],
+   "array": "pos_18706",
+   "t316": {
+    "id": "t316_18706",
+    "value": 244.78693945728838,
+    "text": "244.8",
+    "unit": {
+     "ko": "일",
+     "en": "d"
+    },
+    "label": {
+     "ko": "0.316γ 이탈 시각 (번호 18706, e_u* +)",
+     "en": "Escape time at 0.316γ (no. 18706, e_u* +)"
+    },
+    "note": {
+     "ko": "3-B 스캔 CSV 의 값 (적분: δ 변수 DOP853 rtol 1e-12, atol 1e-18). 방향 바깥쪽",
+     "en": "Value in the 3-B scan CSV (δ variables, DOP853 rtol 1e-12, atol 1e-18). Direction: outward"
+    },
+    "provenance": {
+     "stage": "3-B",
+     "model": "CR3BP",
+     "model_ko": "원궤도 제한 삼체 문제",
+     "verification": {
+      "tag": "impl",
+      "detail": "implementation",
+      "no": 1,
+      "tag_ko": "구현 검증",
+      "detail_ko": "구현"
+     },
+     "source": [
+      {
+       "file": "results/stage3_scan.csv",
+       "key": "번호 18706, 열 t_0.316"
+      }
+     ],
+     "computed_by": "stage3b.py — CSV sha256 85a18cfd3340… (results/stage3_scan.json)",
+     "ref_commit": "91cd77e",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   }
+  },
+  {
+   "번호": 41284,
+   "eu_star_gamma": -1.0000177269138843e-09,
+   "eu_gamma": -1.0743922534515184e-09,
+   "direction_316": -1,
+   "cross_days_csv": [
+    323.2678525148904,
+    350.1770534111429,
+    377.07695210393945,
+    403.85699676895223,
+    430.2682426593842,
+    455.4739150325409
+   ],
+   "cross_days_replay": [
+    323.2678525148904,
+    350.1770534111429,
+    377.07695210393945,
+    403.85699676895223,
+    430.2682426593842,
+    455.4739150325409
+   ],
+   "array": "pos_41284",
+   "t316": {
+    "id": "t316_41284",
+    "value": 455.4739150325409,
+    "text": "455.5",
+    "unit": {
+     "ko": "일",
+     "en": "d"
+    },
+    "label": {
+     "ko": "0.316γ 이탈 시각 (번호 41284, e_u* −)",
+     "en": "Escape time at 0.316γ (no. 41284, e_u* −)"
+    },
+    "note": {
+     "ko": "3-B 스캔 CSV 의 값 (적분: δ 변수 DOP853 rtol 1e-12, atol 1e-18). 방향 지구 쪽",
+     "en": "Value in the 3-B scan CSV (δ variables, DOP853 rtol 1e-12, atol 1e-18). Direction: Earth-side"
+    },
+    "provenance": {
+     "stage": "3-B",
+     "model": "CR3BP",
+     "model_ko": "원궤도 제한 삼체 문제",
+     "verification": {
+      "tag": "impl",
+      "detail": "implementation",
+      "no": 1,
+      "tag_ko": "구현 검증",
+      "detail_ko": "구현"
+     },
+     "source": [
+      {
+       "file": "results/stage3_scan.csv",
+       "key": "번호 41284, 열 t_0.316"
+      }
+     ],
+     "computed_by": "stage3b.py — CSV sha256 85a18cfd3340… (results/stage3_scan.json)",
+     "ref_commit": "91cd77e",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   }
+  },
+  {
+   "번호": 34093,
+   "eu_star_gamma": -9.995575043051615e-08,
+   "eu_gamma": -1.0035489577781376e-07,
+   "direction_316": -1,
+   "cross_days_csv": [
+    215.73657660819748,
+    242.4441382054567,
+    269.30914475941074,
+    296.0986379987668,
+    322.51700513719493,
+    347.72430446985317
+   ],
+   "cross_days_replay": [
+    215.73657660819748,
+    242.4441382054567,
+    269.30914475941074,
+    296.0986379987668,
+    322.51700513719493,
+    347.72430446985317
+   ],
+   "array": "pos_34093",
+   "t316": {
+    "id": "t316_34093",
+    "value": 347.72430446985317,
+    "text": "347.7",
+    "unit": {
+     "ko": "일",
+     "en": "d"
+    },
+    "label": {
+     "ko": "0.316γ 이탈 시각 (번호 34093, e_u* −)",
+     "en": "Escape time at 0.316γ (no. 34093, e_u* −)"
+    },
+    "note": {
+     "ko": "3-B 스캔 CSV 의 값 (적분: δ 변수 DOP853 rtol 1e-12, atol 1e-18). 방향 지구 쪽",
+     "en": "Value in the 3-B scan CSV (δ variables, DOP853 rtol 1e-12, atol 1e-18). Direction: Earth-side"
+    },
+    "provenance": {
+     "stage": "3-B",
+     "model": "CR3BP",
+     "model_ko": "원궤도 제한 삼체 문제",
+     "verification": {
+      "tag": "impl",
+      "detail": "implementation",
+      "no": 1,
+      "tag_ko": "구현 검증",
+      "detail_ko": "구현"
+     },
+     "source": [
+      {
+       "file": "results/stage3_scan.csv",
+       "key": "번호 34093, 열 t_0.316"
+      }
+     ],
+     "computed_by": "stage3b.py — CSV sha256 85a18cfd3340… (results/stage3_scan.json)",
+     "ref_commit": "91cd77e",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   }
+  },
+  {
+   "번호": 57295,
+   "eu_star_gamma": -9.999283438658454e-06,
+   "eu_gamma": -9.998847827631808e-06,
+   "direction_316": -1,
+   "cross_days_csv": [
+    108.011567534243,
+    134.74753222200613,
+    161.56357651994156,
+    188.33065068143645,
+    214.74564921322178,
+    239.95399164057318
+   ],
+   "cross_days_replay": [
+    108.011567534243,
+    134.74753222200613,
+    161.56357651994156,
+    188.33065068143645,
+    214.74564921322178,
+    239.95399164057318
+   ],
+   "array": "pos_57295",
+   "t316": {
+    "id": "t316_57295",
+    "value": 239.95399164057318,
+    "text": "240.0",
+    "unit": {
+     "ko": "일",
+     "en": "d"
+    },
+    "label": {
+     "ko": "0.316γ 이탈 시각 (번호 57295, e_u* −)",
+     "en": "Escape time at 0.316γ (no. 57295, e_u* −)"
+    },
+    "note": {
+     "ko": "3-B 스캔 CSV 의 값 (적분: δ 변수 DOP853 rtol 1e-12, atol 1e-18). 방향 지구 쪽",
+     "en": "Value in the 3-B scan CSV (δ variables, DOP853 rtol 1e-12, atol 1e-18). Direction: Earth-side"
+    },
+    "provenance": {
+     "stage": "3-B",
+     "model": "CR3BP",
+     "model_ko": "원궤도 제한 삼체 문제",
+     "verification": {
+      "tag": "impl",
+      "detail": "implementation",
+      "no": 1,
+      "tag_ko": "구현 검증",
+      "detail_ko": "구현"
+     },
+     "source": [
+      {
+       "file": "results/stage3_scan.csv",
+       "key": "번호 57295, 열 t_0.316"
+      }
+     ],
+     "computed_by": "stage3b.py — CSV sha256 85a18cfd3340… (results/stage3_scan.json)",
+     "ref_commit": "91cd77e",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   }
+  }
+ ],
+ "binary": {
+  "file": "stage3b.escape_samples.bin",
+  "encoding": "float64-le",
+  "bytes": 86400,
+  "sha256": "28cfc07a18cd0b1020b30321bebb1c55a9b8255d2b3cee8af47b5d4525201470",
+  "arrays": {
+   "pos_27813": {
+    "offset": 0,
+    "shape": [
+     600,
+     3
+    ]
+   },
+   "pos_14508": {
+    "offset": 1800,
+    "shape": [
+     600,
+     3
+    ]
+   },
+   "pos_18706": {
+    "offset": 3600,
+    "shape": [
+     600,
+     3
+    ]
+   },
+   "pos_41284": {
+    "offset": 5400,
+    "shape": [
+     600,
+     3
+    ]
+   },
+   "pos_34093": {
+    "offset": 7200,
+    "shape": [
+     600,
+     3
+    ]
+   },
+   "pos_57295": {
+    "offset": 9000,
+    "shape": [
+     600,
+     3
+    ]
+   }
+  }
+ }
+}

@@ -1,0 +1,395 @@
+{
+ "schema": "lagrange-web",
+ "schema_version": "1.0.0",
+ "generated": {
+  "git_commit": "53615d5"
+ },
+ "constants": {
+  "mu": 3.040423404763651e-06,
+  "length_unit_km": 149597870.7,
+  "time_unit_days": 58.13235249350944,
+  "seconds_per_day": 86400.0,
+  "sidereal_year_days": 365.25636,
+  "gm_km3_s2": {
+   "sun": 132712440041.27942,
+   "emb": 403503.2356254801,
+   "earth": 398600.4355070226,
+   "moon": 4902.800118457549,
+   "Mercury Barycenter": 22031.868551400003,
+   "Venus Barycenter": 324858.592,
+   "Mars Barycenter": 42828.3758157561,
+   "Jupiter Barycenter": 126712764.09999998,
+   "Saturn Barycenter": 37940584.8418,
+   "Uranus Barycenter": 5794556.3999999985,
+   "Neptune Barycenter": 6836527.100580399
+  },
+  "srp_k_m2_kg": {
+   "k_A": 0.04405902545929874,
+   "k_B": 0.045278283883313716,
+   "k_C": 0.04521047453903871,
+   "source": {
+    "file": "results/stage5.json",
+    "key": "5-3_5-4_모형과_맞춤>k>맞춤"
+   }
+  },
+  "source": "DE441 header.441 원문 환산 (CLAUDE.md 4절). Horizons 머리말 GM 은 쓰지 않음",
+  "source_en": "Converted from the DE441 header.441 original (CLAUDE.md §4). Horizons header GMs are not used"
+ },
+ "frames": {
+  "rot_nd": {
+   "ko": "CR3BP 회전좌표계 (무차원)",
+   "en": "CR3BP rotating frame (nondimensional)",
+   "origin": "태양–EMB 질량중심",
+   "x_axis": "태양→EMB",
+   "z_axis": "황도 북극",
+   "sun_x": "-mu",
+   "emb_x": "1-mu"
+  },
+  "ecl_j2000_km": {
+   "ko": "황도 J2000 (km)",
+   "en": "Ecliptic J2000 (km)",
+   "center": "파일마다 명시 (SSB / Sun / EMB / Earth)"
+  }
+ },
+ "verification": {
+  "tags": {
+   "impl": {
+    "ko": "구현 검증",
+    "en": "implementation verification"
+   },
+   "external": {
+    "ko": "외부 대조",
+    "en": "external comparison"
+   },
+   "physical": {
+    "ko": "물리 검증",
+    "en": "physical validation"
+   }
+  },
+  "details": {
+   "implementation": {
+    "tag": "impl",
+    "no": 1,
+    "ko": "구현",
+    "en": "implementation"
+   },
+   "model_comparison": {
+    "tag": "impl",
+    "no": 1,
+    "ko": "모델 비교",
+    "en": "model comparison"
+   },
+   "literature": {
+    "tag": "impl",
+    "no": 2,
+    "ko": "문헌 이론값 대조",
+    "en": "comparison with published theory"
+   },
+   "independent": {
+    "tag": "external",
+    "no": 3,
+    "ko": "독립 자료 대조",
+    "en": "comparison with independent data"
+   },
+   "external": {
+    "tag": "external",
+    "no": 4,
+    "ko": "외부 대조",
+    "en": "external comparison"
+   },
+   "measurement": {
+    "tag": "external",
+    "no": 5,
+    "ko": "자료 측정",
+    "en": "measurement from data"
+   },
+   "magnitude": {
+    "tag": "external",
+    "no": 6,
+    "ko": "자릿수 비교",
+    "en": "order-of-magnitude comparison"
+   },
+   "physical": {
+    "tag": "physical",
+    "no": 7,
+    "ko": "물리",
+    "en": "physical"
+   }
+  },
+  "display_approx": {
+   "ko": "표시용 근사",
+   "en": "display approximation"
+  }
+ },
+ "datasets": [
+  {
+   "id": "m0.tag_samples",
+   "file": "m0.tag_samples.json",
+   "kind": "scalars",
+   "stage": "7"
+  },
+  {
+   "id": "stage1.points",
+   "file": "stage1.points.json",
+   "kind": "points",
+   "stage": "1"
+  },
+  {
+   "id": "stage2.l2_directions",
+   "file": "stage2.l2_directions.json",
+   "kind": "vectors",
+   "stage": "2"
+  },
+  {
+   "id": "time.utc",
+   "file": "time.utc.json",
+   "kind": "scalars",
+   "stage": "7"
+  },
+  {
+   "id": "stage4a.jwst",
+   "file": "stage4a.jwst.json",
+   "kind": "trajectory",
+   "stage": "4-A"
+  },
+  {
+   "id": "stage3b.escape_samples",
+   "file": "stage3b.escape_samples.json",
+   "kind": "trajectory",
+   "stage": "3-B"
+  },
+  {
+   "id": "stage3c.halo_family",
+   "file": "stage3c.halo_family.json",
+   "kind": "ensemble",
+   "stage": "3-C"
+  },
+  {
+   "id": "stage3.burns",
+   "file": "stage3.burns.json",
+   "kind": "trajectory",
+   "stage": "3-A·3-C·4-C"
+  },
+  {
+   "id": "stage4.reference",
+   "file": "stage4.reference.json",
+   "kind": "trajectory",
+   "stage": "4-C·4-D"
+  },
+  {
+   "id": "stage5.jwst",
+   "file": "stage5.jwst.json",
+   "kind": "trajectory",
+   "stage": "5"
+  }
+ ],
+ "source_hash": {
+  "sha256": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237",
+  "entries": [
+   "web_export.py"
+  ],
+  "files": [
+   "src/__init__.py",
+   "src/constants.py",
+   "src/cr3bp.py",
+   "src/crossing.py",
+   "src/dynamics.py",
+   "src/early_check.py",
+   "src/emb_frame.py",
+   "src/ephem_checks.py",
+   "src/ephem_keeping.py",
+   "src/ephemeris.py",
+   "src/escape_scan.py",
+   "src/event_checks.py",
+   "src/forces.py",
+   "src/frames.py",
+   "src/halo.py",
+   "src/halo_keeping.py",
+   "src/hermite.py",
+   "src/horizons_text.py",
+   "src/judgment.py",
+   "src/jwst_orbit.py",
+   "src/nbody.py",
+   "src/noburn.py",
+   "src/orientation.py",
+   "src/pulsating.py",
+   "src/solar_lpoints.py",
+   "src/source_hash.py",
+   "src/stability.py",
+   "src/stationkeeping.py",
+   "src/surrogate.py",
+   "src/surrogate_hybrid.py",
+   "src/surrogate_ln.py",
+   "src/units.py",
+   "src/web_export.py",
+   "stage4a.py",
+   "stage4b.py",
+   "stage4c.py",
+   "stage4d.py",
+   "stage5.py",
+   "stage6.py",
+   "stage6_hybrid.py",
+   "stage6_ln.py",
+   "stage6_ln_train.py",
+   "stage6_test.py",
+   "stage6_train.py",
+   "web_export.py",
+   "web_export_m3.py",
+   "web_export_m4.py",
+   "web_export_m5.py"
+  ],
+  "rule": "sha256( Σ [상대 경로 + NUL + 줄바꿈 LF 정규화 바이트 + NUL] ), import 를 따라간 닫힌 목록, 경로 순서 (src/source_hash.py)"
+ },
+ "scene": {
+  "theta_epoch_tdb_s": 820497600.0,
+  "theta_offset_rad": 1.7489576600423322,
+  "theta_note": "관성 모드 θ(t) = θ₀ + (t − t_e)/시간 단위. θ₀ = t_e (2026-01-01 00:00 TDB) 의 EMB 태양 중심 황경 → 관성 x 축 = 황도 J2000 X (설계 11-1 ① 확정 2026-10-27). z = CR3BP 궤도면 법선 ≈ 황도 북극 (근사)",
+  "theta_source": "data/horizons 3 시간 표 첫 마디 (태양·EMB, SSB 황도 J2000) — web_export.py",
+  "ref_commit": "4797f54",
+  "radii_km": {
+   "sun": {
+    "km": 695700.0,
+    "source": "data/horizons/ga01_sun_ssb_20260101_20290101_180m.txt.gz 머리말 'Vol. mean radius, km'"
+   },
+   "earth": {
+    "km": 6371.01,
+    "source": "data/horizons/ga02_earth_ssb_20260101_20290101_180m.txt.gz 머리말 'Vol. Mean Radius (km)'"
+   },
+   "moon": {
+    "km": 1737.53,
+    "source": "data/horizons/ga03_moon_ssb_20260101_20290101_180m.txt.gz 머리말 'Vol. mean radius, km'"
+   }
+  }
+ },
+ "lab": {
+  "datasets": [
+   {
+    "id": "m3.lab",
+    "file": "m3.lab.json",
+    "kind": "model",
+    "stage": "6"
+   }
+  ],
+  "files": [
+   "m3.lab.json",
+   "m3.lab.bin",
+   "m3.d24.forest"
+  ],
+  "설명": "M3 실험실 자료 — 실험실을 열 때만 불러온다 (첫 화면·서비스 워커 미리 담기 밖)"
+ },
+ "solar": {
+  "datasets": [
+   {
+    "id": "m4.ephem",
+    "file": "m4.ephem.json",
+    "kind": "ephemeris",
+    "stage": "4-A"
+   }
+  ],
+  "files": [
+   "m4.ephem.json",
+   "m4.ephem.2022.bin",
+   "m4.ephem.2023.bin",
+   "m4.ephem.2024.bin",
+   "m4.ephem.2025.bin",
+   "m4.ephem.2026.bin",
+   "m4.ephem.2027.bin",
+   "m4.ephem.2028.bin",
+   "m4.ephem.2029.bin",
+   "m4.ephem.2030.bin",
+   "m4.ephem.2031.bin",
+   "m4.ephem.2032.bin",
+   "m4.ephem.2033.bin",
+   "m4.ephem.2034.bin",
+   "m4.ephem.2035.bin",
+   "m4.ephem.2036.bin",
+   "m4.ephem.2037.bin",
+   "m4.ephem.2038.bin",
+   "m4.ephem.2039.bin",
+   "m4.ephem.2040.bin",
+   "m4.ephem.2041.bin",
+   "m4.ephem.2042.bin",
+   "m4.ephem.2043.bin",
+   "m4.ephem.2044.bin",
+   "m4.ephem.2045.bin",
+   "m4.ephem.2046.bin",
+   "m4.ephem.2047.bin",
+   "m4.ephem.2048.bin",
+   "m4.ephem.2049.bin"
+  ],
+  "first_screen": {
+   "index": "m4.ephem.json",
+   "rule": "오늘 (빌드 날짜, 한국 시간) 이 든 연도 조각 + 달 자취 30 일이 해를 넘으면 앞 조각"
+  },
+  "설명": "M4 태양계 천체력 2022 ~ 2050 — 화면의 천체력 한 벌 (결정 ㉘). 연도 조각: 첫 화면은 오늘이 든 조각만, 다른 날짜로 옮기면 그 조각을 그때 불러온다"
+ },
+ "m1test": {
+  "datasets": [
+   {
+    "id": "ephem.earth_moon",
+    "file": "ephem.earth_moon.json",
+    "kind": "ephemeris",
+    "stage": "4-A"
+   }
+  ],
+  "files": [
+   "ephem.earth_moon.json",
+   "ephem.earth_moon.bin"
+  ],
+  "설명": "M1 3 시간 표 (2026 ~ 2029) — 시험용 (결정 ㉘). 화면은 M4 표 한 벌"
+ },
+ "textures": {
+  "datasets": [
+   {
+    "id": "m4.textures",
+    "file": "m4.textures.json",
+    "kind": "image",
+    "stage": "7"
+   }
+  ],
+  "files": [
+   "m4.textures.json",
+   "m4.textures.bin",
+   "m4.moon_2k.webp",
+   "m4.moon_8k.webp",
+   "m4.earth_day_2k.webp",
+   "m4.earth_day_8k.webp",
+   "m4.earth_night_2k.webp",
+   "m4.earth_night_8k.webp"
+  ],
+  "single_exclude": [
+   "m4.moon_8k.webp",
+   "m4.earth_day_8k.webp",
+   "m4.earth_night_8k.webp"
+  ],
+  "설명": "M4 표면 그림 (달, NASA SVS 공공 영역) — 첫 화면 뒤 2K, 그 뒤 8K (휴대폰·한 파일판은 2K)"
+ },
+ "sky": {
+  "datasets": [
+   {
+    "id": "m5.stars",
+    "file": "m5.stars.json",
+    "kind": "stars",
+    "stage": "7"
+   },
+   {
+    "id": "m5.milkyway",
+    "file": "m5.milkyway.json",
+    "kind": "image",
+    "stage": "7"
+   }
+  ],
+  "files": [
+   "m5.stars.json",
+   "m5.stars.bin",
+   "m5.milkyway.json",
+   "m5.milkyway_2k.webp",
+   "m5.milkyway.webp"
+  ],
+  "web_exclude": [],
+  "single_exclude": [
+   "m5.milkyway.webp"
+  ],
+  "설명": "M5 별 (HYG v4.4, CC BY-SA 4.0)·은하수 (ESA/Gaia/DPAC, CC BY-SA 3.0 IGO) — 첫 화면 뒤 (은하수 2K → 8192×4096, 한 파일판·휴대폰은 2K 만 — 그래픽 묶음 4)"
+ }
+}

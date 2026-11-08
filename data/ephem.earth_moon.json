@@ -1,0 +1,256 @@
+{
+ "schema_version": "1.0.0",
+ "id": "ephem.earth_moon",
+ "kind": "ephemeris",
+ "title": {
+  "ko": "실제 천체력 — 태양·지구·달·EMB (3 시간)",
+  "en": "Real ephemeris — Sun, Earth, Moon, EMB (3 h)"
+ },
+ "provenance": {
+  "stage": "4-A",
+  "model": "DE441 (JPL Horizons)",
+  "model_ko": "실제 천체력",
+  "verification": {
+   "tag": "impl",
+   "detail": "implementation",
+   "no": 1,
+   "tag_ko": "구현 검증",
+   "detail_ko": "구현"
+  },
+  "source": [
+   {
+    "file": "data/horizons/ga01_sun_ssb_20260101_20290101_180m.txt.gz",
+    "key": "원문 (gzip)"
+   },
+   {
+    "file": "data/horizons/ga02_earth_ssb_20260101_20290101_180m.txt.gz",
+    "key": "원문 (gzip)"
+   },
+   {
+    "file": "data/horizons/ga03_moon_ssb_20260101_20290101_180m.txt.gz",
+    "key": "원문 (gzip)"
+   },
+   {
+    "file": "data/horizons/ga04_emb_ssb_20260101_20290101_180m.txt.gz",
+    "key": "원문 (gzip)"
+   }
+  ],
+  "computed_by": "stage4a.arr",
+  "ref_commit": "e1f4a3e",
+  "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+ },
+ "frame": "ecl_j2000_km",
+ "time": {
+  "scale": "TDB",
+  "unit": "s",
+  "epoch": "J2000 (JD 2451545.0 TDB)"
+ },
+ "bodies": [
+  {
+   "id": "태양",
+   "name": {
+    "ko": "태양",
+    "en": "Sun"
+   }
+  },
+  {
+   "id": "지구",
+   "name": {
+    "ko": "지구",
+    "en": "Earth"
+   }
+  },
+  {
+   "id": "달",
+   "name": {
+    "ko": "달",
+    "en": "Moon"
+   }
+  },
+  {
+   "id": "EMB",
+   "name": {
+    "ko": "EMB",
+    "en": "EMB"
+   }
+  }
+ ],
+ "center": "SSB",
+ "interpolation": {
+  "method": "3차 에르미트 (위치·속도)",
+  "python": "src/ephemeris.py HermiteGroup",
+  "js": "core/interp.js"
+ },
+ "holdout": {
+  "태양": {
+   "id": "holdout_Sun",
+   "value": 9.414877088501238e-10,
+   "text": "9.4e-10",
+   "unit": "km",
+   "label": {
+    "ko": "태양 보간 자체 오차 (3 시간 간격, 추정 최대)",
+    "en": "Sun interpolation error (3 h step, estimated max)"
+   },
+   "note": {
+    "ko": "4-A: 받은 시점을 하나 걸러 보간해 뺀 시점에서 잰 오차를 h⁴ 비례로 3 시간 간격에 옮긴 값",
+    "en": "4-A: error measured at held-out nodes (every other node removed), scaled to the 3 h step by h⁴"
+   },
+   "provenance": {
+    "stage": "4-A",
+    "model": "DE441",
+    "model_ko": "실제 천체력",
+    "verification": {
+     "tag": "impl",
+     "detail": "implementation",
+     "no": 1,
+     "tag_ko": "구현 검증",
+     "detail_ko": "구현"
+    },
+    "source": [
+     {
+      "file": "results/stage4a.json",
+      "key": "보간>SSB>태양>추정_받은간격_pos_max_km"
+     }
+    ],
+    "computed_by": "results/stage4a.json",
+    "ref_commit": "1590254",
+    "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+   }
+  },
+  "지구": {
+   "id": "holdout_Earth",
+   "value": 2.294895342078865e-05,
+   "text": "2.3e-05",
+   "unit": "km",
+   "label": {
+    "ko": "지구 보간 자체 오차 (3 시간 간격, 추정 최대)",
+    "en": "Earth interpolation error (3 h step, estimated max)"
+   },
+   "note": {
+    "ko": "4-A: 받은 시점을 하나 걸러 보간해 뺀 시점에서 잰 오차를 h⁴ 비례로 3 시간 간격에 옮긴 값",
+    "en": "4-A: error measured at held-out nodes (every other node removed), scaled to the 3 h step by h⁴"
+   },
+   "provenance": {
+    "stage": "4-A",
+    "model": "DE441",
+    "model_ko": "실제 천체력",
+    "verification": {
+     "tag": "impl",
+     "detail": "implementation",
+     "no": 1,
+     "tag_ko": "구현 검증",
+     "detail_ko": "구현"
+    },
+    "source": [
+     {
+      "file": "results/stage4a.json",
+      "key": "보간>SSB>지구>추정_받은간격_pos_max_km"
+     }
+    ],
+    "computed_by": "results/stage4a.json",
+    "ref_commit": "1590254",
+    "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+   }
+  },
+  "달": {
+   "id": "holdout_Moon",
+   "value": 0.0012349342450476246,
+   "text": "1.2e-03",
+   "unit": "km",
+   "label": {
+    "ko": "달 보간 자체 오차 (3 시간 간격, 추정 최대)",
+    "en": "Moon interpolation error (3 h step, estimated max)"
+   },
+   "note": {
+    "ko": "4-A: 받은 시점을 하나 걸러 보간해 뺀 시점에서 잰 오차를 h⁴ 비례로 3 시간 간격에 옮긴 값",
+    "en": "4-A: error measured at held-out nodes (every other node removed), scaled to the 3 h step by h⁴"
+   },
+   "provenance": {
+    "stage": "4-A",
+    "model": "DE441",
+    "model_ko": "실제 천체력",
+    "verification": {
+     "tag": "impl",
+     "detail": "implementation",
+     "no": 1,
+     "tag_ko": "구현 검증",
+     "detail_ko": "구현"
+    },
+    "source": [
+     {
+      "file": "results/stage4a.json",
+      "key": "보간>SSB>달>추정_받은간격_pos_max_km"
+     }
+    ],
+    "computed_by": "results/stage4a.json",
+    "ref_commit": "1590254",
+    "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+   }
+  },
+  "EMB": {
+   "id": "holdout_EMB",
+   "value": 9.51844136020323e-06,
+   "text": "9.5e-06",
+   "unit": "km",
+   "label": {
+    "ko": "EMB 보간 자체 오차 (3 시간 간격, 추정 최대)",
+    "en": "EMB interpolation error (3 h step, estimated max)"
+   },
+   "note": {
+    "ko": "4-A: 받은 시점을 하나 걸러 보간해 뺀 시점에서 잰 오차를 h⁴ 비례로 3 시간 간격에 옮긴 값",
+    "en": "4-A: error measured at held-out nodes (every other node removed), scaled to the 3 h step by h⁴"
+   },
+   "provenance": {
+    "stage": "4-A",
+    "model": "DE441",
+    "model_ko": "실제 천체력",
+    "verification": {
+     "tag": "impl",
+     "detail": "implementation",
+     "no": 1,
+     "tag_ko": "구현 검증",
+     "detail_ko": "구현"
+    },
+    "source": [
+     {
+      "file": "results/stage4a.json",
+      "key": "보간>SSB>EMB>추정_받은간격_pos_max_km"
+     }
+    ],
+    "computed_by": "results/stage4a.json",
+    "ref_commit": "1590254",
+    "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+   }
+  }
+ },
+ "binary": {
+  "file": "ephem.earth_moon.bin",
+  "encoding": "float64-le",
+  "bytes": 1753800,
+  "sha256": "dacf1ad484c35e41391a58abecf5fd59295e6cc84b0d946cdb2392d90c61411b",
+  "arrays": {
+   "t": {
+    "offset": 0,
+    "shape": [
+     8769
+    ]
+   },
+   "R": {
+    "offset": 8769,
+    "shape": [
+     8769,
+     4,
+     3
+    ]
+   },
+   "V": {
+    "offset": 113997,
+    "shape": [
+     8769,
+     4,
+     3
+    ]
+   }
+  }
+ }
+}

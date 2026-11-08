@@ -1,0 +1,619 @@
+{
+ "schema_version": "1.0.0",
+ "id": "m3.lab",
+ "kind": "model",
+ "title": {
+  "ko": "실험실 계산 자료 (M3)",
+  "en": "Lab computation data (M3)"
+ },
+ "provenance": {
+  "stage": "6",
+  "model": "CR3BP L2 + T3 + D24 + MLP-C_ln",
+  "model_ko": "원궤도 제한 삼체 문제 L2 근처 — 선형 이론 T3·잔차 모델 D24·MLP-C_ln",
+  "verification": {
+   "tag": "impl",
+   "detail": "implementation",
+   "no": 1,
+   "tag_ko": "구현 검증",
+   "detail_ko": "구현"
+  },
+  "source": [
+   {
+    "file": "results/stage6_hybrid.json",
+    "key": "선택>D"
+   },
+   {
+    "file": "results/stage7_m3_mlp.json",
+    "key": "sha256"
+   },
+   {
+    "file": "results/stage3b.json",
+    "key": "비선형결합_계수>M_적합_γ단위"
+   },
+   {
+    "file": "results/stage6_ln.json",
+    "key": "탐색>선택>C_ln"
+   },
+   {
+    "file": "results/stage6.json",
+    "key": "6-D_최종평가>범위밖_입력_시연"
+   }
+  ],
+  "computed_by": "web_export_m3.lab_block",
+  "ref_commit": "23b3353",
+  "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+ },
+ "frame": "rot_nd",
+ "time": null,
+ "frame_l2": {
+  "mu": 3.040423404763651e-06,
+  "x": 1.0100752000235915,
+  "gamma": 0.010078240446996234,
+  "lam": 2.4843167201670897,
+  "w_p": 2.0570141907644945,
+  "w_z": 1.985074856295163,
+  "env_p": 0.9541392256634579,
+  "env_z": 1.0,
+  "time_unit_days": 58.13235249350944,
+  "point": "L2"
+ },
+ "criteria": {
+  "R_over_gamma": [
+   0.001,
+   0.0031622776601683794,
+   0.01,
+   0.03162277660168379,
+   0.1,
+   0.31622776601683794
+  ],
+  "labels": [
+   "0.001",
+   "0.00316",
+   "0.01",
+   "0.0316",
+   "0.1",
+   "0.316"
+  ]
+ },
+ "range": {
+  "eu_gamma": [
+   1e-11,
+   0.0001
+  ],
+  "disp_max_gamma": 0.0001,
+  "rtol": 1e-09,
+  "rule": "|e_u|/γ ∈ [1e-11, 1e-4] (상대 여유 1e-9) 이고 위치 변위 상한의 합 ≤ 1e-4 γ (src/surrogate.py in_training_range)"
+ },
+ "integrate": {
+  "t_max_days": 730.51272,
+  "rtol": 1e-12,
+  "atol": 1e-18,
+  "method": "DOP853 (scipy 1.18.1 을 옮긴 core/lab/dop853.js)",
+  "rule": "L2 기준 변위 δ = s − s_L2 적분, 기준 R/γ 6 개 첫 통과 (증가 방향), 0.316γ 에서 멈춤 (src/escape_scan.py integrate_one, 결정 M3-b)"
+ },
+ "t3": {
+  "n_iter": 60,
+  "rule": "src/escape_scan.py t_full_linear — E 의 첫 성분을 e_u* 로 바꿔 넣음 (src/surrogate.py linear_theory)"
+ },
+ "mlp": {
+  "seeds": [
+   1,
+   2,
+   3
+  ],
+  "layers": 4,
+  "width": 128,
+  "activation": "gelu",
+  "gelu_c": 0.7071067690849304,
+  "gelu_rule": "keras.activations.gelu (approximate=False) → tf.nn.gelu = 0.5·x·erfc(−x·c), c = tf.cast(0.7071067811865476, float64) — Python 수가 먼저 float32 로 바뀌어 c = 0.7071067690849304 (정의식 1/√2 와 상대 1.7e-8 다름). JS 판은 이 c 로 Keras 를 재현",
+  "input": "C_ln = (sign(e_u), ln|e_u|, e_s, e_p1, e_p2, e_z1, e_z2, e_u*) → 표준화 (x_mean·x_std) → [Dense + gelu] × 층 → logt (선형) → × y_std + y_mean, 시드 3 평균",
+  "sha256_npz": "8aa175b3eaf804678a55015a331cab0e8ee923c414b9cb13c93c331cd9c2e0d1",
+  "source_sha256": {
+   "C_ln_s1_x4.keras": "8a723c45c946bcbd66f7891587bd73570264ac139b02442dec9c3b9e6343a830",
+   "C_ln_s1_x4_전처리.pkl": "dc9db10540d2ec60b0e4b78e29cf0679e210e0617e54b26ef8d3916a06735d64",
+   "C_ln_s2_x4.keras": "221fb9ec137280dc97b513403fc3799e6591d7e446d95241fc5f590c16930210",
+   "C_ln_s2_x4_전처리.pkl": "dc9db10540d2ec60b0e4b78e29cf0679e210e0617e54b26ef8d3916a06735d64",
+   "C_ln_s3_x4.keras": "95e1b57f12e977c8f807d91ce9fdc3f616f22d540a73a119dff7d3f8a79e0d05",
+   "C_ln_s3_x4_전처리.pkl": "dc9db10540d2ec60b0e4b78e29cf0679e210e0617e54b26ef8d3916a06735d64"
+  }
+ },
+ "d24": {
+  "file": "m3.d24.forest",
+  "bytes": 16007392,
+  "sha256": "01cff88e741f2a8734f7ce4deb36b359981bf1a35b4067c1ad904e5c1cd90b8f",
+  "format": "lagrange-forest 판 1 (src/surrogate_hybrid.py export_model)",
+  "name": "RF-C 잔차 다중 n50·d12",
+  "residual": true,
+  "w_R": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "rule": "z = (x − 평균)/표준편차 (float64) → 나무 갈림 비교 직전에만 float32 (Math.fround, 사전 등록 수정 B) → 나무 순서대로 잎 6 값 합 / 나무 수 → + ln t_T3 (T3 nan → nan)",
+  "judgement": "하이브리드 사전 등록: (H) 기각 — 구조적, (R) 잔차 모델 지지 (docs/stage6_하이브리드_요약.md)"
+ },
+ "demo_range": {
+  "source": "results/stage6.json 6-D_최종평가>범위밖_입력_시연",
+  "E": [
+   [
+    1.0078240446996233e-08,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0078240446996234e-15,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0078240446996234e-05,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0078240446996233e-08,
+    3.0234721340988698e-06,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  ],
+  "in": [
+   true,
+   false,
+   false,
+   false
+  ],
+  "label_ko": [
+   "학습 범위 안",
+   "외삽 — 신뢰하지 않음",
+   "외삽 — 신뢰하지 않음",
+   "외삽 — 신뢰하지 않음"
+  ],
+  "rule": "E = (e_u, e_s, 0, 0, 0, 0) = (e_u/γ, e_s/γ) × γ — 예측은 하되 표시를 붙인다 (6단계 결정 13)"
+ },
+ "uncertain": {
+  "factor": 3.0,
+  "rmse_log_mlp": [
+   0.006485070931480733,
+   0.005858238065310504,
+   0.006015748364541598,
+   0.0050836053547438234,
+   0.004895430485896714,
+   0.00470612810816325
+  ],
+  "spread_median": [
+   0.004311790930020988,
+   0.003881383582686888,
+   0.0030872530268498764,
+   0.0036892289197119456,
+   0.0024409571861789088,
+   0.0023623939792741387
+  ],
+  "n_val": 9826,
+  "n_escape": [
+   9826,
+   9826,
+   9826,
+   9826,
+   9826,
+   9826
+  ],
+  "rule": "기준 R 마다 불일치 |ln t_MLP − ln t_T3| > 3 × rmse_log_mlp 또는 퍼짐 std_ddof1(시드 3 개) > 3 × spread_median 이면 '불확실' (docs/stage6_하이브리드_계획.md 5절). 숫자는 깨끗한 검증 분할 (stage6_train.data va_clean, 잡음 지배 제외) 에서 numpy 순전파 (시드 3 평균) 로 계산 — 브라우저는 비교만",
+  "source": "web_export_m3.uncertain_block (results/stage3_scan.csv 검증 분할, results/stage7_m3_mlp.npz)"
+ },
+ "examples": [
+  {
+   "kind": "q10",
+   "E": [
+    4.8998851116854994e-08,
+    -7.711745278111162e-08,
+    5.097401912130904e-09,
+    2.486784970480814e-07,
+    4.5030370610026246e-08,
+    -3.301862627931435e-08
+   ],
+   "sample_no": 22544,
+   "t316_days": 261.6647252194983,
+   "quantile": 0.1,
+   "quantile_days": 261.71735644019964,
+   "source": "3-B 주 표본 (깨끗한 검증 분할) — 0.316γ 이탈 시각 10 % 분위수 261.7 일에 가장 가까움",
+   "source_en": "3-B main sample (clean validation split) — closest to the 10 % quantile of the 0.316γ escape time, 261.7 days"
+  },
+  {
+   "kind": "q50",
+   "E": [
+    1.5523991488971874e-10,
+    -6.592089400693375e-07,
+    -4.0655008814856487e-08,
+    5.886180058256001e-08,
+    2.389069518220783e-07,
+    -6.470355717979664e-08
+   ],
+   "sample_no": 29655,
+   "t316_days": 397.0464690209019,
+   "quantile": 0.5,
+   "quantile_days": 397.13130305994036,
+   "source": "3-B 주 표본 (깨끗한 검증 분할) — 0.316γ 이탈 시각 50 % 분위수 397.1 일에 가장 가까움",
+   "source_en": "3-B main sample (clean validation split) — closest to the 50 % quantile of the 0.316γ escape time, 397.1 days"
+  },
+  {
+   "kind": "q90",
+   "E": [
+    4.2977036958781093e-13,
+    1.7105967412439828e-07,
+    2.2269000192737627e-07,
+    3.0384113103535905e-07,
+    -5.690676092964369e-08,
+    -1.4486443393570356e-07
+   ],
+   "sample_no": 49922,
+   "t316_days": 497.865889817493,
+   "quantile": 0.9,
+   "quantile_days": 497.86953016765403,
+   "source": "3-B 주 표본 (깨끗한 검증 분할) — 0.316γ 이탈 시각 90 % 분위수 497.9 일에 가장 가까움",
+   "source_en": "3-B main sample (clean validation split) — closest to the 90 % quantile of the 0.316γ escape time, 497.9 days"
+  },
+  {
+   "kind": "out",
+   "E": [
+    1.0078240446996234e-15,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "sample_no": null,
+   "source": "results/stage6.json 6-D_최종평가>범위밖_입력_시연 [1] (e_u/γ 1e-13, e_s/γ 0 — 학습 표본 아님)",
+   "source_en": "results/stage6.json 6-D out-of-range demo input [1] (e_u/γ 1e-13, e_s/γ 0 — not a training sample)"
+  },
+  {
+   "kind": "noise",
+   "E": [
+    8.350256929027947e-13,
+    1.7240941867169887e-07,
+    5.986775969933706e-07,
+    1.4713824071193085e-07,
+    -8.364519582663765e-08,
+    -9.077910099703862e-08
+   ],
+   "sample_no": 37381,
+   "t316_days": 623.4114597271063,
+   "multiple_8_1": 115177.0513294047,
+   "L_days": 0.0005640747911957848,
+   "source": "3-B 주 표본 (깨끗한 검증 분할) — |e_u| 1e-11 ~ 1e-10 γ 구간에서 MLP-C_ln 0.316γ 8-1 배수 최대 (1.15e+05 배, 판정선 중앙값 5.64e-04 일)",
+   "source_en": "3-B main sample (clean validation split) — largest MLP-C_ln 0.316γ 8-1 multiple in the |e_u| 1e-11 – 1e-10 γ bin (1.15e+05 ×, median judgment line 5.64e-04 days)"
+  }
+ ],
+ "sliders": {
+  "eu_log10": [
+   -12,
+   -3
+  ],
+  "eu_train": [
+   1e-11,
+   0.0001
+  ],
+  "es_in": 0.0001,
+  "ap_in": 0.00010480650759375845,
+  "az_in": 0.0001,
+  "out_factor": 10.0,
+  "rule": "결정 h ①: |e_u|/γ 로그 1e-12 ~ 1e-3 (계획서), e_s·A_p·A_z 는 학습 경계 (위치 변위 상한의 합 ≤ 1e-4 γ — 다른 칸이 0 일 때의 끝) 안, 범위 밖 허용 (연구 프리셋) 이면 그 10 배. 범위 밖 허용이 꺼져 있으면 움직인 칸을 학습 범위 안으로 자른다 (core/lab/input.js clampToRange)"
+ },
+ "binary": {
+  "file": "m3.lab.bin",
+  "encoding": "float64-le",
+  "bytes": 1236584,
+  "sha256": "544a05329558e16bc869ec5ab0d8e148e4f9e4ac96ef74eddb81f39460c3c095",
+  "arrays": {
+   "P": {
+    "offset": 0,
+    "shape": [
+     6,
+     6
+    ]
+   },
+   "P_inv": {
+    "offset": 36,
+    "shape": [
+     6,
+     6
+    ]
+   },
+   "s_ref": {
+    "offset": 72,
+    "shape": [
+     6
+    ]
+   },
+   "M": {
+    "offset": 78,
+    "shape": [
+     5,
+     5
+    ]
+   },
+   "s1_W0": {
+    "offset": 103,
+    "shape": [
+     8,
+     128
+    ]
+   },
+   "s1_b0": {
+    "offset": 1127,
+    "shape": [
+     128
+    ]
+   },
+   "s1_W1": {
+    "offset": 1255,
+    "shape": [
+     128,
+     128
+    ]
+   },
+   "s1_b1": {
+    "offset": 17639,
+    "shape": [
+     128
+    ]
+   },
+   "s1_W2": {
+    "offset": 17767,
+    "shape": [
+     128,
+     128
+    ]
+   },
+   "s1_b2": {
+    "offset": 34151,
+    "shape": [
+     128
+    ]
+   },
+   "s1_W3": {
+    "offset": 34279,
+    "shape": [
+     128,
+     128
+    ]
+   },
+   "s1_b3": {
+    "offset": 50663,
+    "shape": [
+     128
+    ]
+   },
+   "s1_Wo": {
+    "offset": 50791,
+    "shape": [
+     128,
+     6
+    ]
+   },
+   "s1_bo": {
+    "offset": 51559,
+    "shape": [
+     6
+    ]
+   },
+   "s1_x_mean": {
+    "offset": 51565,
+    "shape": [
+     8
+    ]
+   },
+   "s1_x_std": {
+    "offset": 51573,
+    "shape": [
+     8
+    ]
+   },
+   "s1_y_mean": {
+    "offset": 51581,
+    "shape": [
+     6
+    ]
+   },
+   "s1_y_std": {
+    "offset": 51587,
+    "shape": [
+     6
+    ]
+   },
+   "s2_W0": {
+    "offset": 51593,
+    "shape": [
+     8,
+     128
+    ]
+   },
+   "s2_b0": {
+    "offset": 52617,
+    "shape": [
+     128
+    ]
+   },
+   "s2_W1": {
+    "offset": 52745,
+    "shape": [
+     128,
+     128
+    ]
+   },
+   "s2_b1": {
+    "offset": 69129,
+    "shape": [
+     128
+    ]
+   },
+   "s2_W2": {
+    "offset": 69257,
+    "shape": [
+     128,
+     128
+    ]
+   },
+   "s2_b2": {
+    "offset": 85641,
+    "shape": [
+     128
+    ]
+   },
+   "s2_W3": {
+    "offset": 85769,
+    "shape": [
+     128,
+     128
+    ]
+   },
+   "s2_b3": {
+    "offset": 102153,
+    "shape": [
+     128
+    ]
+   },
+   "s2_Wo": {
+    "offset": 102281,
+    "shape": [
+     128,
+     6
+    ]
+   },
+   "s2_bo": {
+    "offset": 103049,
+    "shape": [
+     6
+    ]
+   },
+   "s2_x_mean": {
+    "offset": 103055,
+    "shape": [
+     8
+    ]
+   },
+   "s2_x_std": {
+    "offset": 103063,
+    "shape": [
+     8
+    ]
+   },
+   "s2_y_mean": {
+    "offset": 103071,
+    "shape": [
+     6
+    ]
+   },
+   "s2_y_std": {
+    "offset": 103077,
+    "shape": [
+     6
+    ]
+   },
+   "s3_W0": {
+    "offset": 103083,
+    "shape": [
+     8,
+     128
+    ]
+   },
+   "s3_b0": {
+    "offset": 104107,
+    "shape": [
+     128
+    ]
+   },
+   "s3_W1": {
+    "offset": 104235,
+    "shape": [
+     128,
+     128
+    ]
+   },
+   "s3_b1": {
+    "offset": 120619,
+    "shape": [
+     128
+    ]
+   },
+   "s3_W2": {
+    "offset": 120747,
+    "shape": [
+     128,
+     128
+    ]
+   },
+   "s3_b2": {
+    "offset": 137131,
+    "shape": [
+     128
+    ]
+   },
+   "s3_W3": {
+    "offset": 137259,
+    "shape": [
+     128,
+     128
+    ]
+   },
+   "s3_b3": {
+    "offset": 153643,
+    "shape": [
+     128
+    ]
+   },
+   "s3_Wo": {
+    "offset": 153771,
+    "shape": [
+     128,
+     6
+    ]
+   },
+   "s3_bo": {
+    "offset": 154539,
+    "shape": [
+     6
+    ]
+   },
+   "s3_x_mean": {
+    "offset": 154545,
+    "shape": [
+     8
+    ]
+   },
+   "s3_x_std": {
+    "offset": 154553,
+    "shape": [
+     8
+    ]
+   },
+   "s3_y_mean": {
+    "offset": 154561,
+    "shape": [
+     6
+    ]
+   },
+   "s3_y_std": {
+    "offset": 154567,
+    "shape": [
+     6
+    ]
+   }
+  }
+ }
+}

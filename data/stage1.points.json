@@ -1,0 +1,240 @@
+{
+ "schema_version": "1.0.0",
+ "id": "stage1.points",
+ "kind": "points",
+ "title": {
+  "ko": "라그랑주 점 L1 ~ L5",
+  "en": "Lagrange points L1–L5"
+ },
+ "provenance": {
+  "stage": "1",
+  "model": "CR3BP",
+  "model_ko": "원궤도 제한 삼체 문제",
+  "verification": {
+   "tag": "impl",
+   "detail": "implementation",
+   "no": 1,
+   "tag_ko": "구현 검증",
+   "detail_ko": "구현"
+  },
+  "source": [
+   {
+    "file": "results/stage1.json",
+    "key": "points"
+   }
+  ],
+  "computed_by": "results/stage1.json",
+  "ref_commit": "bc11a4e",
+  "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+ },
+ "frame": "rot_nd",
+ "time": null,
+ "mu": 3.040423404763651e-06,
+ "items": [
+  {
+   "id": "L1",
+   "x": 0.9899859823419014,
+   "y": 0.0,
+   "z": 0.0,
+   "dist": {
+    "id": "L1_dist",
+    "value": 1497620.8779363825,
+    "text": "1,497,621",
+    "unit": "km",
+    "label": {
+     "ko": "L1 — EMB 로부터 거리",
+     "en": "L1 — distance from EMB"
+    },
+    "note": {
+     "ko": "CR3BP 평형점 (태양–EMB, μ = 3.040423404764e-06). 거리 = 무차원 거리 × 1 AU",
+     "en": "CR3BP equilibrium point (Sun–EMB, μ = 3.040423404764e-06). Distance = nondimensional distance × 1 AU"
+    },
+    "provenance": {
+     "stage": "1",
+     "model": "CR3BP",
+     "model_ko": "원궤도 제한 삼체 문제",
+     "verification": {
+      "tag": "impl",
+      "detail": "implementation",
+      "no": 1,
+      "tag_ko": "구현 검증",
+      "detail_ko": "구현"
+     },
+     "source": [
+      {
+       "file": "results/stage1.json",
+       "key": "points>L1>EMB로부터_거리_km"
+      }
+     ],
+     "computed_by": "results/stage1.json",
+     "ref_commit": "bc11a4e",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   }
+  },
+  {
+   "id": "L2",
+   "x": 1.0100752000235915,
+   "y": 0.0,
+   "z": 0.0,
+   "dist": {
+    "id": "L2_dist",
+    "value": 1507683.3112732526,
+    "text": "1,507,683",
+    "unit": "km",
+    "label": {
+     "ko": "L2 — EMB 로부터 거리",
+     "en": "L2 — distance from EMB"
+    },
+    "note": {
+     "ko": "CR3BP 평형점 (태양–EMB, μ = 3.040423404764e-06). 거리 = 무차원 거리 × 1 AU",
+     "en": "CR3BP equilibrium point (Sun–EMB, μ = 3.040423404764e-06). Distance = nondimensional distance × 1 AU"
+    },
+    "provenance": {
+     "stage": "1",
+     "model": "CR3BP",
+     "model_ko": "원궤도 제한 삼체 문제",
+     "verification": {
+      "tag": "impl",
+      "detail": "implementation",
+      "no": 1,
+      "tag_ko": "구현 검증",
+      "detail_ko": "구현"
+     },
+     "source": [
+      {
+       "file": "results/stage1.json",
+       "key": "points>L2>EMB로부터_거리_km"
+      }
+     ],
+     "computed_by": "results/stage1.json",
+     "ref_commit": "bc11a4e",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   }
+  },
+  {
+   "id": "L3",
+   "x": -1.0000012668430853,
+   "y": 0.0,
+   "z": 0.0,
+   "dist": {
+    "id": "L3_dist",
+    "value": 299195476.07616067,
+    "text": "299,195,476",
+    "unit": "km",
+    "label": {
+     "ko": "L3 — EMB 로부터 거리",
+     "en": "L3 — distance from EMB"
+    },
+    "note": {
+     "ko": "CR3BP 평형점 (태양–EMB, μ = 3.040423404764e-06). 거리 = 무차원 거리 × 1 AU",
+     "en": "CR3BP equilibrium point (Sun–EMB, μ = 3.040423404764e-06). Distance = nondimensional distance × 1 AU"
+    },
+    "provenance": {
+     "stage": "1",
+     "model": "CR3BP",
+     "model_ko": "원궤도 제한 삼체 문제",
+     "verification": {
+      "tag": "impl",
+      "detail": "implementation",
+      "no": 1,
+      "tag_ko": "구현 검증",
+      "detail_ko": "구현"
+     },
+     "source": [
+      {
+       "file": "results/stage1.json",
+       "key": "points>L3>EMB로부터_거리_km"
+      }
+     ],
+     "computed_by": "results/stage1.json",
+     "ref_commit": "bc11a4e",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   }
+  },
+  {
+   "id": "L4",
+   "x": 0.49999695957659523,
+   "y": 0.8660254037844386,
+   "z": 0.0,
+   "dist": {
+    "id": "L4_dist",
+    "value": 149597870.69999996,
+    "text": "149,597,871",
+    "unit": "km",
+    "label": {
+     "ko": "L4 — EMB 로부터 거리",
+     "en": "L4 — distance from EMB"
+    },
+    "note": {
+     "ko": "CR3BP 평형점 (태양–EMB, μ = 3.040423404764e-06). 거리 = 무차원 거리 × 1 AU",
+     "en": "CR3BP equilibrium point (Sun–EMB, μ = 3.040423404764e-06). Distance = nondimensional distance × 1 AU"
+    },
+    "provenance": {
+     "stage": "1",
+     "model": "CR3BP",
+     "model_ko": "원궤도 제한 삼체 문제",
+     "verification": {
+      "tag": "impl",
+      "detail": "implementation",
+      "no": 1,
+      "tag_ko": "구현 검증",
+      "detail_ko": "구현"
+     },
+     "source": [
+      {
+       "file": "results/stage1.json",
+       "key": "points>L4>EMB로부터_거리_km"
+      }
+     ],
+     "computed_by": "results/stage1.json",
+     "ref_commit": "bc11a4e",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   }
+  },
+  {
+   "id": "L5",
+   "x": 0.49999695957659523,
+   "y": -0.8660254037844386,
+   "z": 0.0,
+   "dist": {
+    "id": "L5_dist",
+    "value": 149597870.69999996,
+    "text": "149,597,871",
+    "unit": "km",
+    "label": {
+     "ko": "L5 — EMB 로부터 거리",
+     "en": "L5 — distance from EMB"
+    },
+    "note": {
+     "ko": "CR3BP 평형점 (태양–EMB, μ = 3.040423404764e-06). 거리 = 무차원 거리 × 1 AU",
+     "en": "CR3BP equilibrium point (Sun–EMB, μ = 3.040423404764e-06). Distance = nondimensional distance × 1 AU"
+    },
+    "provenance": {
+     "stage": "1",
+     "model": "CR3BP",
+     "model_ko": "원궤도 제한 삼체 문제",
+     "verification": {
+      "tag": "impl",
+      "detail": "implementation",
+      "no": 1,
+      "tag_ko": "구현 검증",
+      "detail_ko": "구현"
+     },
+     "source": [
+      {
+       "file": "results/stage1.json",
+       "key": "points>L5>EMB로부터_거리_km"
+      }
+     ],
+     "computed_by": "results/stage1.json",
+     "ref_commit": "bc11a4e",
+     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+    }
+   }
+  }
+ ]
+}

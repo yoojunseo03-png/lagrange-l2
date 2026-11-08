@@ -1,0 +1,324 @@
+{
+ "schema_version": "1.0.0",
+ "id": "m4.textures",
+ "kind": "image",
+ "title": {
+  "ko": "천체 표면 그림·자세 (M4) — 달·지구",
+  "en": "Body surface textures & orientation (M4) — Moon, Earth"
+ },
+ "provenance": {
+  "stage": "7",
+  "model": "NASA SVS CGI Moon Kit · NASA Blue/Black Marble · IAU",
+  "model_ko": "표면 그림 (달·지구) 과 자세 (IAU)",
+  "verification": {
+   "tag": "impl",
+   "detail": "implementation",
+   "no": 1,
+   "tag_ko": "구현 검증",
+   "detail_ko": "구현"
+  },
+  "source": [
+   {
+    "file": "data/textures/moon/manifest.json",
+    "key": "files"
+   },
+   {
+    "file": "data/textures/earth/manifest.json",
+    "key": "files"
+   },
+   {
+    "file": "data/iau/manifest.json",
+    "key": "files"
+   }
+  ],
+  "computed_by": "web_export_m4.textures_block",
+  "ref_commit": "4797f54",
+  "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+ },
+ "frame": null,
+ "time": null,
+ "moon": {
+  "lo": {
+   "file": "m4.moon_2k.webp",
+   "bytes": 477286,
+   "sha256": "b2aec46ed3288089f75d5eb173be6ec1376f9ad5bbc9fd7ec4375259627f64c0",
+   "size_px": [
+    2048,
+    1024
+   ],
+   "from": "data/textures/moon/lroc_color_poles_2k.tif",
+   "webp": {
+    "quality": 90
+   }
+  },
+  "hi": {
+   "file": "m4.moon_8k.webp",
+   "bytes": 6488608,
+   "sha256": "429740c38660fe1be6fe6b387b83be497420e3e9f6b076d6473698cfbbf4e386",
+   "size_px": [
+    8192,
+    4096
+   ],
+   "from": "data/textures/moon/lroc_color_poles_8k.tif",
+   "webp": {
+    "quality": 90
+   }
+  },
+  "webp_quality": 90,
+  "projection": "정거원통 (경도 0 = 그림 가운데, 위 = 북)",
+  "orientation": "IAU WGCCRE 2009 자전 모델 (그래픽 묶음 3, 2026-11-03 — 전에는 표시용 근사: 경도 0 을 지구 쪽으로). d.orient.moon",
+  "license": {
+   "name": "공공 영역 (NASA SVS)",
+   "attribution": "NASA's Scientific Visualization Studio (원문 'Please give credit for this item to: NASA's Scientific Visualization Studio')"
+  }
+ },
+ "earth": {
+  "earth_day": {
+   "lo": {
+    "file": "m4.earth_day_2k.webp",
+    "bytes": 1039730,
+    "sha256": "07abc4b8b0c86ac23c5ac7eede24ac11db5a53f8a24ff4fddee8f06b595cf847",
+    "size_px": [
+     2048,
+     1024
+    ],
+    "from": "data/textures/earth/world.200407.3x21600x10800.jpg",
+    "reduce": "면적 평균 (Pillow BOX)",
+    "webp": {
+     "lossless": true,
+     "quality": 100
+    }
+   },
+   "hi": {
+    "file": "m4.earth_day_8k.webp",
+    "bytes": 3864860,
+    "sha256": "762aa72f1ada4beede421638dd9f07abccf9284bf58de059ddc593a52c4acf47",
+    "size_px": [
+     8192,
+     4096
+    ],
+    "from": "data/textures/earth/world.200407.3x21600x10800.jpg",
+    "reduce": "면적 평균 (Pillow BOX)",
+    "webp": {
+     "quality": 95
+    }
+   }
+  },
+  "earth_night": {
+   "lo": {
+    "file": "m4.earth_night_2k.webp",
+    "bytes": 593464,
+    "sha256": "3f1e22d9f728710f41276649afd9813c98afd7e396ebf6e7557069c01095a11c",
+    "size_px": [
+     2048,
+     1024
+    ],
+    "from": "data/textures/earth/BlackMarble_2016_3km.jpg",
+    "reduce": "면적 평균 (Pillow BOX)",
+    "webp": {
+     "lossless": true,
+     "quality": 100
+    }
+   },
+   "hi": {
+    "file": "m4.earth_night_8k.webp",
+    "bytes": 2226792,
+    "sha256": "245b848f6c86205d3e091495d94ceed6fbcc4ba4e3d94bb684c2c7bc1e81b448",
+    "size_px": [
+     8192,
+     4096
+    ],
+    "from": "data/textures/earth/BlackMarble_2016_3km.jpg",
+    "reduce": "면적 평균 (Pillow BOX)",
+    "webp": {
+     "quality": 95
+    }
+   }
+  },
+  "projection": "정거원통 (경도 −180 ~ 180°, 경도 0 = 그림 가운데, 위 = 북)",
+  "license": {
+   "name": "NASA (미국 저작권 대상 아님)",
+   "attribution": "NASA Earth Observatory (Blue Marble Next Generation · Black Marble 2016)"
+  },
+  "night_note": "밤 그림 = Black Marble 2016 색 지도 (불빛 + 달빛 아래 지표). 낮·밤 경계 섞기·대기 빛은 표시용 근사 (셰이더)",
+  "clouds": "없음 — 구름 원본을 받지 못함 (data/textures/earth/manifest.json 못_받은_것)"
+ },
+ "binary": {
+  "file": "m4.textures.bin",
+  "encoding": "float64-le",
+  "bytes": 1064128,
+  "sha256": "b6be709b847aeaed17882cd60423bbaa4592c122f60aa71c7444e381128294cb",
+  "arrays": {
+   "t": {
+    "offset": 0,
+    "shape": [
+     10232
+    ]
+   },
+   "du": {
+    "offset": 10232,
+    "shape": [
+     10232
+    ]
+   },
+   "q": {
+    "offset": 20464,
+    "shape": [
+     10232,
+     9
+    ]
+   },
+   "dut1_s": {
+    "offset": 112552,
+    "shape": [
+     10232
+    ]
+   },
+   "dut1_in": {
+    "offset": 122784,
+    "shape": [
+     10232
+    ]
+   }
+  }
+ },
+ "orient": {
+  "earth": {
+   "rule": "M = R1(ε) · Qᵀ · R3(−ERA)  (본체 ITRS → 황도 J2000, 극운동 없음). Q = 하루 간격 마디 사이 원소별 선형 보간, D_u 도 선형 보간, ERA = 2π (frac(D_u) + 0.7790572732640 + 0.00273781191135448 D_u) (IAU 2000, erfa.era00). Q 는 erfa.c2i06a (IAU 2006/2000A, TT ≈ TDB)",
+   "eps_arcsec": 84381.448,
+   "step_s": 86400.0,
+   "dut1": "UT1 = UTC + DUT1 (astropy IERS-B 표 MJD 37665 ~ 61273, 밖은 0)",
+   "python": "src/orientation.py earth_matrix",
+   "verification": "구현 검증 — golden m4_orient (브라우저 = Python), astropy ITRS→GCRS 와의 차 (극운동·DUT1 포함) 는 tests/test_stage7.py"
+  },
+  "moon": {
+   "rule": "M = R1(ε) · [R3(W) R1(90° − δ0) R3(90° + α0)]ᵀ, α0·δ0·W = IAU WGCCRE 2009 (NAIF pck00011.tpc BODY301_*, 각 E_i = e0 + e1 T)",
+   "coef": {
+    "pole_ra": [
+     269.9949,
+     0.0031,
+     0.0
+    ],
+    "pole_dec": [
+     66.5392,
+     0.013,
+     0.0
+    ],
+    "pm": [
+     38.3213,
+     13.17635815,
+     -1.4e-12
+    ],
+    "ra": [
+     -3.8787,
+     -0.1204,
+     0.07,
+     -0.0172,
+     0.0,
+     0.0072,
+     0.0,
+     0.0,
+     0.0,
+     -0.0052,
+     0.0,
+     0.0,
+     0.0043
+    ],
+    "dec": [
+     1.5419,
+     0.0239,
+     -0.0278,
+     0.0068,
+     0.0,
+     -0.0029,
+     0.0009,
+     0.0,
+     0.0,
+     0.0008,
+     0.0,
+     0.0,
+     -0.0009
+    ],
+    "pmt": [
+     3.561,
+     0.1208,
+     -0.0642,
+     0.0158,
+     0.0252,
+     -0.0066,
+     -0.0047,
+     -0.0046,
+     0.0028,
+     0.0052,
+     0.004,
+     0.0019,
+     -0.0044
+    ],
+    "angles": [
+     [
+      125.045,
+      -1935.5364525
+     ],
+     [
+      250.089,
+      -3871.072905
+     ],
+     [
+      260.008,
+      475263.3328725
+     ],
+     [
+      176.625,
+      487269.629985
+     ],
+     [
+      357.529,
+      35999.0509575
+     ],
+     [
+      311.589,
+      964468.49931
+     ],
+     [
+      134.963,
+      477198.869325
+     ],
+     [
+      276.617,
+      12006.300765
+     ],
+     [
+      34.226,
+      63863.5132425
+     ],
+     [
+      15.134,
+      -5806.6093575
+     ],
+     [
+      119.743,
+      131.84064
+     ],
+     [
+      239.961,
+      6003.1503825
+     ],
+     [
+      25.053,
+      473327.79642
+     ]
+    ]
+   },
+   "eps_arcsec": 84381.448,
+   "source": "data/iau/pck00011.tpc (data/iau/manifest.json)",
+   "python": "src/orientation.py moon_matrix"
+  },
+  "texture_axes": "그림 경도 0 = 본체 +x, 북 = 본체 +z (지구 ITRS·달 평균 지구 방향 축)"
+ },
+ "rule": "공개판: 2K 를 먼저 (첫 화면 뒤) → 화면에서 크면 8K (그래픽 묶음 1 — scene/texlod.js). 휴대폰 (가벼운 모드) 은 2K 만. 한 파일판은 2K 만 (결정 ㉗)",
+ "single_exclude": [
+  "m4.moon_8k.webp",
+  "m4.earth_day_8k.webp",
+  "m4.earth_night_8k.webp"
+ ]
+}

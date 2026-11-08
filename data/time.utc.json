@@ -1,0 +1,58 @@
+{
+ "schema_version": "1.0.0",
+ "id": "time.utc",
+ "kind": "scalars",
+ "title": {
+  "ko": "TDB → UTC 환산표",
+  "en": "TDB → UTC table"
+ },
+ "provenance": {
+  "stage": "7",
+  "model": "astropy 8.0.1",
+  "model_ko": "astropy Time (tdb → utc)",
+  "verification": {
+   "tag": "impl",
+   "detail": "implementation",
+   "no": 1,
+   "tag_ko": "구현 검증",
+   "detail_ko": "구현"
+  },
+  "source": [
+   {
+    "file": "src/web_export.py",
+    "key": "utc_table"
+   }
+  ],
+  "computed_by": "web_export.py",
+  "ref_commit": "eebb11c",
+  "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+ },
+ "frame": null,
+ "time": {
+  "scale": "TDB",
+  "unit": "s",
+  "epoch": "J2000"
+ },
+ "items": [],
+ "method": "하루 간격 표, 사이는 선형 보간 (core/timeline.js tdbToUnix). 윤초는 astropy (ERFA) 표 기준 — 표가 알려 주는 해 뒤로는 윤초가 더 없다고 가정한다 (ERFA 'dubious year' 경고, 2027 이후). 화면 UTC 는 그 가정 아래의 값",
+ "binary": {
+  "file": "time.utc.bin",
+  "encoding": "float64-le",
+  "bytes": 163648,
+  "sha256": "6fa303afbea7d98cdc14d08832c8c6867331e3c430ae88bb1e1cae2ab4f45ac5",
+  "arrays": {
+   "t_tdb_s": {
+    "offset": 0,
+    "shape": [
+     10228
+    ]
+   },
+   "unix_utc_s": {
+    "offset": 10228,
+    "shape": [
+     10228
+    ]
+   }
+  }
+ }
+}

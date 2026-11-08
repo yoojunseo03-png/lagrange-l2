@@ -1,0 +1,106 @@
+{
+ "schema_version": "1.0.0",
+ "id": "m5.milkyway",
+ "kind": "image",
+ "title": {
+  "ko": "은하수 (ESA Gaia, 8192×4096)",
+  "en": "Milky Way (ESA Gaia, 8192×4096)"
+ },
+ "provenance": {
+  "stage": "7",
+  "model": "Gaia DR2 sky",
+  "model_ko": "ESA Gaia DR2 전천 밝기·색 지도",
+  "verification": {
+   "tag": "impl",
+   "detail": "implementation",
+   "no": 1,
+   "tag_ko": "구현 검증",
+   "detail_ko": "구현"
+  },
+  "source": [
+   {
+    "file": "data/sky/manifest.json",
+    "key": "big"
+   }
+  ],
+  "computed_by": "web_export_m5.milkyway_block",
+  "ref_commit": "c28269b",
+  "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+ },
+ "frame": null,
+ "time": null,
+ "file": "m5.milkyway.webp",
+ "bytes": 31328836,
+ "sha256": "be83d93100df8caf895af76b5ef08979abde9ece83466451b78c0aa8a9baa8aa",
+ "size_px": [
+  8192,
+  4096
+ ],
+ "webp_quality": "8k_lossless",
+ "variants": {
+  "lo": {
+   "file": "m5.milkyway_2k.webp",
+   "bytes": 1524916,
+   "sha256": "91793ad42e35aa9147535e7161d04dd6da7a245b18b17ee68e93fc6944f38cca",
+   "size_px": [
+    2048,
+    1024
+   ],
+   "webp": {
+    "lossless": true,
+    "quality": 100
+   }
+  },
+  "hi": {
+   "file": "m5.milkyway.webp",
+   "bytes": 31328836,
+   "sha256": "be83d93100df8caf895af76b5ef08979abde9ece83466451b78c0aa8a9baa8aa",
+   "size_px": [
+    8192,
+    4096
+   ],
+   "webp": {
+    "lossless": true,
+    "quality": 100
+   },
+   "level": "8k_lossless"
+  }
+ },
+ "webp_quality_note": "그래픽 묶음 4: SSIM·크기 표 results/stage7_그래픽_품질.json 에서 크기 규칙 (공개판 ≤ 80 MB) 안 가장 높은 설정. 원본 40000×20000 → 8192×4096 면적 평균 (data/sky/big, git 밖), 2K 는 8K 를 4 배 면적 평균. 한 파일판·휴대폰은 2K 만",
+ "projection": {
+  "kind": "정거원통 (equirectangular), 은하 좌표",
+  "center_l_deg": 0.0,
+  "l_direction": "왼쪽으로 증가",
+  "b_direction": "위가 +",
+  "u": "(0.5 − l/360)·W, l ∈ (−180°, 180°]",
+  "v": "(0.5 − b/180)·H",
+  "checked": "8K 판: 4000×2000 판 (2026-11-02 확인) 과 이동 0 에서 밝기 상관 0.9926, 대마젤란·소마젤란·M31 이 거울점보다 밝음 (results/stage7_그래픽_은하수방향.json)"
+ },
+ "gal_to_ecl": [
+  [
+   -0.05487565771259218,
+   0.49410943719272665,
+   -0.8676661375596585
+  ],
+  [
+   -0.9938213670392311,
+   -0.11099084121958248,
+   -0.0003515418088206574
+  ],
+  [
+   -0.09647669463079853,
+   0.8622858558752174,
+   0.4971472117498602
+  ]
+ ],
+ "gal_to_ecl_rule": "황도 J2000 = R_x(ε) · (은하 → ICRS, astropy Galactic) · 은하 벡터. 열 = 은하 x (l=0,b=0)·y (l=90°)·z (b=90°) 의 황도 성분",
+ "galactic_center_ecl": {
+  "lon_deg": 266.83951851771064,
+  "lat_deg": -5.536318629502968
+ },
+ "license": {
+  "name": "CC BY-SA 3.0 IGO",
+  "attribution": "ESA/Gaia/DPAC",
+  "derived": "40000×20000 원본을 면적 평균으로 줄여 WebP 로 저장한 파생 그림 — 같은 조건 (CC BY-SA 3.0 IGO)"
+ }
+}
