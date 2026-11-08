@@ -17,6 +17,7 @@
 | 계산 결과 (`results/web/`) | 이 저장소의 Python 계산 (상수: DE441 header.441 원문 환산) | 코드 MIT, 결과·문서 CC BY 4.0 (사용자 결정 ⑧, `LICENSE`·`LICENSES.md`) | M0 |
 | 천체 위치·JWST 궤적 | NASA/JPL Horizons System (ssd.jpl.nasa.gov/horizons) — 천체력 DE441, JWST 재구성·무분사 예측 | 출처 표기. 미리 받아 둔 자료만 쓰고 실행 중 호출 없음 (CLAUDE.md 7절) | 화면 아래 출처 줄과 출처 창 (2026-11-08) |
 | 앱 아이콘 (`src/pwa/icons/`) | 임시 — `web_icon.py` 로 그림 (사용자 결정 ⑪, 나중에 바꿈) | 이 저장소 | M0 |
+| 행성 공전 궤도선 (`results/web/m4.orbits.json`) | JPL SSD, Keplerian elements for approximate positions of the major planets 표 1 (ssd.jpl.nasa.gov/planets/approx_pos.html, E. M. Standish) — `stage7_공전궤도.py` 로 닫힌 선을 만듦 | 궤도 요소 수치, 출처 표기 (`data/jpl_approx_pos/manifest.json`) | 표시용 근사 — 궤도 모양만 (2026-11-09) |
 | 지구 낮 표면 (Blue Marble Next Generation 2004-07, 21600×10800 → 면적 평균 8K·2K → WebP) | NASA Earth Observatory (science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/base-map) | NASA 자료 — 미국 저작권 대상 아님. 출처 표기, NASA 로고·보증 암시 없음 | 그래픽 묶음 2 (2026-11-03 받음, 결정 ㉛ NASA 로 변경, `data/textures/earth/manifest.json`) — 공개판 2K → 화면에서 크면 8K, 휴대폰·한 파일판 2K |
 | 지구 밤 불빛 (Black Marble 2016 색 지도 3 km, 13500×6750 → 8K·2K) | NASA Earth Observatory — Earth at Night (science.nasa.gov/earth/earth-observatory/earth-at-night/maps), Suomi NPP VIIRS | 위와 같음 | 그래픽 묶음 2 (2026-11-03). 구름 층은 원본을 받지 못해 없음 |
 | 달·지구 자세 계수 | 달: IAU WGCCRE 2009 (Archinal 외 2011) — NAIF `pck00011.tpc` (naif.jpl.nasa.gov). 지구: IAU 2006/2000A (pyerfa — SOFA/ERFA) | NAIF 공개 자료 / ERFA BSD-3 (Python 쪽만, 배포물에 안 들어감) | 그래픽 묶음 2·3 (`data/iau/manifest.json`) |

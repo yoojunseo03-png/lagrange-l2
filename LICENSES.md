@@ -17,6 +17,7 @@
 | 지구 낮 (Blue Marble Next Generation) · 지구 밤 (Black Marble 2016) | NASA Earth Observatory | NASA 자료. 출처 표기 NASA | `m4.earth_*.webp` (줄여 WebP 로 변환) |
 | 달 표면 (CGI Moon Kit) | NASA's Scientific Visualization Studio | 공공 영역 | `m4.moon_*.webp` (줄여 WebP 로 변환) |
 | 천체 위치·JWST 궤적 | NASA/JPL Horizons System, https://ssd.jpl.nasa.gov/horizons/ | 출처 표기 | 웹 자료의 천체력·JWST 궤적 |
+| 행성 공전 궤도선 | JPL Solar System Dynamics, Keplerian elements for approximate positions of the major planets (E. M. Standish), https://ssd.jpl.nasa.gov/planets/approx_pos.html | 궤도 요소 수치, 출처 표기 | `m4.orbits.json` (궤도 모양만 — 표시용 근사) |
 | 글꼴 Pretendard 1.3.9 | Copyright (c) 2021, Kil Hyung-jin | SIL OFL 1.1 — `fonts/LICENSE.txt` | 고치지 않고 그대로 |
 | three.js 0.186.1 | three.js authors | MIT | 묶음 파일 안에 라이선스 표기 |
 

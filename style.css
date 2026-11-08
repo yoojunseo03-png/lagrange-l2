@@ -254,4 +254,6 @@ body.chrome-hidden .focus { top: 14px; }
 /* ---- 하늘 배경 출처·라이선스 (M5) */
 .credits { position: fixed; z-index: 3; left: 12px; bottom: 6px; max-width: calc(100vw - 420px); font-size: var(--fs-body); color: var(--muted); line-height: 1.4; }
 .credits .tag { margin: 0 2px; }
-@media (max-width: 767px) { .credits { max-width: calc(100vw - 24px); bottom: 24px; } }
+@media (max-width: 767px) { .credits { max-width: calc(100vw - 24px); bottom: 24px; } #version { max-width: calc(100vw - 112px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } }
+/* 한 줄에 안 들어갈 때의 "출처" 단추 (2026-11-09) — 시간 막대 아래 띠 (컴퓨터 30 px, 휴대폰 26 px) 안에 든다 */
+.credits.credits-compact { bottom: 3px; height: 21px; line-height: 19px; padding: 0 9px; font-size: var(--fs-small); color: var(--fg); background: var(--panel); border: 1px solid var(--line); border-radius: 999px; }
