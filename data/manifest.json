@@ -2,7 +2,7 @@
  "schema": "lagrange-web",
  "schema_version": "1.0.0",
  "generated": {
-  "git_commit": "53615d5"
+  "git_commit": "903f6a1"
  },
  "constants": {
   "mu": 3.040423404763651e-06,
@@ -184,7 +184,7 @@
   }
  ],
  "source_hash": {
-  "sha256": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237",
+  "sha256": "35f53562f04e2387104596bc634352b32aa6d1453e0cf9a1150f6f8546b41cd2",
   "entries": [
    "web_export.py"
   ],
@@ -211,7 +211,9 @@
    "src/jwst_orbit.py",
    "src/nbody.py",
    "src/noburn.py",
+   "src/orbit_shape.py",
    "src/orientation.py",
+   "src/planet_orientation.py",
    "src/pulsating.py",
    "src/solar_lpoints.py",
    "src/source_hash.py",
@@ -245,7 +247,7 @@
   "theta_offset_rad": 1.7489576600423322,
   "theta_note": "관성 모드 θ(t) = θ₀ + (t − t_e)/시간 단위. θ₀ = t_e (2026-01-01 00:00 TDB) 의 EMB 태양 중심 황경 → 관성 x 축 = 황도 J2000 X (설계 11-1 ① 확정 2026-10-27). z = CR3BP 궤도면 법선 ≈ 황도 북극 (근사)",
   "theta_source": "data/horizons 3 시간 표 첫 마디 (태양·EMB, SSB 황도 J2000) — web_export.py",
-  "ref_commit": "4797f54",
+  "ref_commit": "70e162f",
   "radii_km": {
    "sun": {
     "km": 695700.0,
@@ -353,14 +355,34 @@
    "m4.moon_2k.webp",
    "m4.moon_8k.webp",
    "m4.earth_day_2k.webp",
-   "m4.earth_day_8k.webp",
    "m4.earth_night_2k.webp",
-   "m4.earth_night_8k.webp"
+   "m4.earth_clouds_2k.webp",
+   "m4.earth_clouds_8k.webp",
+   "m4.earth_land.webp",
+   "m4.planet_mercury_2k.webp",
+   "m4.planet_venus_2k.webp",
+   "m4.planet_mars_2k.webp",
+   "m4.planet_jupiter_2k.webp",
+   "m4.planet_saturn_2k.webp",
+   "m4.planet_uranus_2k.webp",
+   "m4.planet_neptune_2k.webp",
+   "m4.planet_mercury_hi.webp",
+   "m4.planet_venus_hi.webp",
+   "m4.planet_mars_hi.webp",
+   "m4.planet_jupiter_hi.webp",
+   "m4.planet_saturn_hi.webp",
+   "m4.saturn_ring_2k.webp",
+   "m4.saturn_ring_hi.webp"
   ],
   "single_exclude": [
    "m4.moon_8k.webp",
-   "m4.earth_day_8k.webp",
-   "m4.earth_night_8k.webp"
+   "m4.earth_clouds_8k.webp",
+   "m4.planet_mercury_hi.webp",
+   "m4.planet_venus_hi.webp",
+   "m4.planet_mars_hi.webp",
+   "m4.planet_jupiter_hi.webp",
+   "m4.planet_saturn_hi.webp",
+   "m4.saturn_ring_hi.webp"
   ],
   "설명": "M4 표면 그림 (달, NASA SVS 공공 영역) — 첫 화면 뒤 2K, 그 뒤 8K (휴대폰·한 파일판은 2K)"
  },

@@ -29,7 +29,7 @@
   ],
   "computed_by": "stage4a._jwst_interps·_rho_func (하루 간격, 4-A 회전·맥동 좌표) + web_export.jwst_to_scene (10 분 간격, 같은 좌표)",
   "ref_commit": "e1f4a3e",
-  "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+  "source_hash": "35f53562f04e2387104596bc634352b32aa6d1453e0cf9a1150f6f8546b41cd2"
  },
  "frame": "rot_nd",
  "time": null,
@@ -108,7 +108,7 @@
      ],
      "computed_by": "web_export.jwst_join_block (|r_na1 − r_03U|)",
      "ref_commit": "e1f4a3e",
-     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     "source_hash": "35f53562f04e2387104596bc634352b32aa6d1453e0cf9a1150f6f8546b41cd2"
     }
    },
    {
@@ -143,7 +143,7 @@
      ],
      "computed_by": "results/stage5.json",
      "ref_commit": "2e8cc45",
-     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     "source_hash": "35f53562f04e2387104596bc634352b32aa6d1453e0cf9a1150f6f8546b41cd2"
     }
    }
   ]
@@ -209,7 +209,7 @@
      ],
      "computed_by": "results/stage4a.json",
      "ref_commit": "1590254",
-     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     "source_hash": "35f53562f04e2387104596bc634352b32aa6d1453e0cf9a1150f6f8546b41cd2"
     }
    },
    {
@@ -250,7 +250,7 @@
      ],
      "computed_by": "results/stage4a_주기조사.json",
      "ref_commit": "103fa3f",
-     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     "source_hash": "35f53562f04e2387104596bc634352b32aa6d1453e0cf9a1150f6f8546b41cd2"
     }
    },
    {
@@ -295,7 +295,7 @@
      ],
      "computed_by": "results/stage4a_주기조사.json",
      "ref_commit": "103fa3f",
-     "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+     "source_hash": "35f53562f04e2387104596bc634352b32aa6d1453e0cf9a1150f6f8546b41cd2"
     }
    }
   ]

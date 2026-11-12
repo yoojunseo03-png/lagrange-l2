@@ -33,7 +33,7 @@
   ],
   "computed_by": "web_export_m4.textures_block",
   "ref_commit": "4797f54",
-  "source_hash": "edd8dc163f554a6837ed64382159ffc4d5b1a6bc3100111687908a095daae237"
+  "source_hash": "35f53562f04e2387104596bc634352b32aa6d1453e0cf9a1150f6f8546b41cd2"
  },
  "frame": null,
  "time": null,
@@ -88,20 +88,6 @@
      "lossless": true,
      "quality": 100
     }
-   },
-   "hi": {
-    "file": "m4.earth_day_8k.webp",
-    "bytes": 3864860,
-    "sha256": "762aa72f1ada4beede421638dd9f07abccf9284bf58de059ddc593a52c4acf47",
-    "size_px": [
-     8192,
-     4096
-    ],
-    "from": "data/textures/earth/world.200407.3x21600x10800.jpg",
-    "reduce": "면적 평균 (Pillow BOX)",
-    "webp": {
-     "quality": 95
-    }
    }
   },
   "earth_night": {
@@ -119,20 +105,6 @@
      "lossless": true,
      "quality": 100
     }
-   },
-   "hi": {
-    "file": "m4.earth_night_8k.webp",
-    "bytes": 2226792,
-    "sha256": "245b848f6c86205d3e091495d94ceed6fbcc4ba4e3d94bb684c2c7bc1e81b448",
-    "size_px": [
-     8192,
-     4096
-    ],
-    "from": "data/textures/earth/BlackMarble_2016_3km.jpg",
-    "reduce": "면적 평균 (Pillow BOX)",
-    "webp": {
-     "quality": 95
-    }
    }
   },
   "projection": "정거원통 (경도 −180 ~ 180°, 경도 0 = 그림 가운데, 위 = 북)",
@@ -141,7 +113,166 @@
    "attribution": "NASA Earth Observatory (Blue Marble Next Generation · Black Marble 2016)"
   },
   "night_note": "밤 그림 = Black Marble 2016 색 지도 (불빛 + 달빛 아래 지표). 낮·밤 경계 섞기·대기 빛은 표시용 근사 (셰이더)",
-  "clouds": "없음 — 구름 원본을 받지 못함 (data/textures/earth/manifest.json 못_받은_것)"
+  "clouds_note": "구름 = Solar System Scope 8K (CC BY 4.0). 표시용 — 특정 날짜의 구름이 아님, 지구와 함께 자전 (data/textures/earth_clouds/manifest.json)",
+  "clouds": {
+   "lo": {
+    "file": "m4.earth_clouds_2k.webp",
+    "bytes": 557550,
+    "sha256": "120324b4c7d010eeeaa8f6e8136f3ccebc01e4a6ba5628f2cd4fa71977e587f8",
+    "size_px": [
+     2048,
+     1024
+    ],
+    "from": "data/textures/earth_clouds/2k_earth_clouds.jpg",
+    "webp": {
+     "quality": 85
+    }
+   },
+   "hi": {
+    "file": "m4.earth_clouds_8k.webp",
+    "bytes": 8011564,
+    "sha256": "3c32cf8742a6f33766fec54e201c1fc2e7dba5c47b330e624add55877916bc4d",
+    "size_px": [
+     8192,
+     4096
+    ],
+    "from": "data/textures/earth_clouds/8k_earth_clouds.jpg",
+    "webp": {
+     "quality": 85
+    }
+   },
+   "license": "CC BY 4.0",
+   "attribution": "Solar System Scope (INOVE), https://www.solarsystemscope.com/textures/"
+  },
+  "land": {
+   "file": "m4.earth_land.webp",
+   "bytes": 248372,
+   "sha256": "015a3398504f8dad260639ff8a458c426b71a9affa34194b7f4e7fee049e1cad",
+   "size_px": [
+    4096,
+    2048
+   ],
+   "from": "data/textures/earth_500m/earth_land_4096.png (Natural Earth 10m 육지 − 호수)",
+   "license": "공공 영역 (Natural Earth)"
+  },
+  "tiles": {
+   "content": 496,
+   "border": 8,
+   "size": 512,
+   "w0": 43200,
+   "h0": 21600,
+   "webp": {
+    "quality": 80,
+    "method": 4,
+    "alpha_quality": 100,
+    "exact": true
+   },
+   "dir": "earth_tiles",
+   "levels": {
+    "day": {
+     "0": {
+      "px": [
+       43200,
+       21600
+      ],
+      "km_per_px_equator": 0.9266249999999999,
+      "grid": [
+       88,
+       44
+      ],
+      "n": 3872,
+      "bytes": 33255492
+     },
+     "1": {
+      "px": [
+       21600,
+       10800
+      ],
+      "km_per_px_equator": 1.8532499999999998,
+      "grid": [
+       44,
+       22
+      ],
+      "n": 968,
+      "bytes": 10624892
+     },
+     "2": {
+      "px": [
+       10800,
+       5400
+      ],
+      "km_per_px_equator": 3.7064999999999997,
+      "grid": [
+       22,
+       11
+      ],
+      "n": 242,
+      "bytes": 3368114
+     },
+     "3": {
+      "px": [
+       5400,
+       2700
+      ],
+      "km_per_px_equator": 7.412999999999999,
+      "grid": [
+       11,
+       6
+      ],
+      "n": 66,
+      "bytes": 1098872
+     }
+    },
+    "night": {
+     "1": {
+      "px": [
+       21600,
+       10800
+      ],
+      "km_per_px_equator": 1.8532499999999998,
+      "grid": [
+       44,
+       22
+      ],
+      "n": 968,
+      "bytes": 4089616
+     },
+     "2": {
+      "px": [
+       10800,
+       5400
+      ],
+      "km_per_px_equator": 3.7064999999999997,
+      "grid": [
+       22,
+       11
+      ],
+      "n": 242,
+      "bytes": 1277696
+     },
+     "3": {
+      "px": [
+       5400,
+       2700
+      ],
+      "km_per_px_equator": 7.412999999999999,
+      "grid": [
+       11,
+       6
+      ],
+      "n": 66,
+      "bytes": 404460
+     }
+    }
+   },
+   "count": 6424,
+   "bytes": 54119142,
+   "tree_sha256": "031cec54129e9b639bcb899fc4bc82e8b21677d499f6241cd23542294d6ae2fd",
+   "path": "<dir>/<day|night>/<p>/<줄>_<칸>.webp",
+   "reduce": "면적 평균",
+   "day_alpha": "육지 비율 (Natural Earth 10m 육지 − 호수)",
+   "source": "data/textures/earth_500m/manifest.json · data/natural_earth/manifest.json"
+  }
  },
  "binary": {
   "file": "m4.textures.bin",
@@ -315,10 +446,887 @@
   },
   "texture_axes": "그림 경도 0 = 본체 +x, 북 = 본체 +z (지구 ITRS·달 평균 지구 방향 축)"
  },
+ "planets": {
+  "Mercury": {
+   "source_dir": "data/textures/mercury",
+   "lo": {
+    "file": "m4.planet_mercury_2k.webp",
+    "bytes": 625630,
+    "sha256": "36c730a082f062b4fde11f341304bb7d917288a97821a55514fcdd3c8bc7bc52",
+    "size_px": [
+     2048,
+     1024
+    ],
+    "from": "data/textures/mercury/2k_mercury.jpg",
+    "reduce": "그대로",
+    "webp": {
+     "quality": 90
+    }
+   },
+   "hi": {
+    "file": "m4.planet_mercury_hi.webp",
+    "bytes": 13852438,
+    "sha256": "23a7cbb852be43b8991430a154193c543db8dc50d8c1395682810b431c580b28",
+    "size_px": [
+     8192,
+     4096
+    ],
+    "from": "data/textures/mercury/8k_mercury.jpg",
+    "reduce": "그대로",
+    "webp": {
+     "quality": 90
+    }
+   },
+   "license": "CC BY 4.0",
+   "attribution": "Solar System Scope (INOVE), https://www.solarsystemscope.com/textures/",
+   "coef": {
+    "pole_ra": [
+     281.0103,
+     -0.0328,
+     0.0
+    ],
+    "pole_dec": [
+     61.4155,
+     -0.0049,
+     0.0
+    ],
+    "pm": [
+     329.5988,
+     6.1385108,
+     0.0
+    ],
+    "ra": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "dec": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "pmt": [
+     0.01067257,
+     -0.00112309,
+     -0.0001104,
+     -2.539e-05,
+     -5.71e-06
+    ],
+    "angles": [
+     [
+      174.7910857,
+      149472.53587500003
+     ],
+     [
+      349.5821714,
+      298945.07175000006
+     ],
+     [
+      164.3732571,
+      448417.60762500006
+     ],
+     [
+      339.1643429,
+      597890.1435000001
+     ],
+     [
+      153.9554286,
+      747362.679375
+     ]
+    ],
+    "radii_km": [
+     2440.53,
+     2440.53,
+     2438.26
+    ]
+   },
+   "shape": {
+    "equator": 1.0003102343356451,
+    "polar": 0.999379819945352
+   },
+   "atmosphere": null,
+   "atmo_size": 1.0,
+   "projection": "정거원통 (경도 0 = 그림 가운데, 동쪽이 오른쪽, 위 = 북)"
+  },
+  "Venus": {
+   "source_dir": "data/textures/venus",
+   "lo": {
+    "file": "m4.planet_venus_2k.webp",
+    "bytes": 66736,
+    "sha256": "580dfe532a07f54cea30e608dc6f260de39474dff0cfdfc86643b4bfb51eb85d",
+    "size_px": [
+     2048,
+     1024
+    ],
+    "from": "data/textures/venus/2k_venus_atmosphere.jpg",
+    "reduce": "그대로",
+    "webp": {
+     "quality": 90
+    }
+   },
+   "hi": {
+    "file": "m4.planet_venus_hi.webp",
+    "bytes": 246040,
+    "sha256": "0f0f24124a8faca034b8e5e1365861552f778d70409ed7c83024bdc6e47909df",
+    "size_px": [
+     4096,
+     2048
+    ],
+    "from": "data/textures/venus/4k_venus_atmosphere.jpg",
+    "reduce": "그대로",
+    "webp": {
+     "quality": 90
+    }
+   },
+   "license": "CC BY 4.0",
+   "attribution": "Solar System Scope (INOVE), https://www.solarsystemscope.com/textures/",
+   "coef": {
+    "pole_ra": [
+     272.76,
+     0.0,
+     0.0
+    ],
+    "pole_dec": [
+     67.16,
+     0.0,
+     0.0
+    ],
+    "pm": [
+     160.2,
+     -1.4813688,
+     0.0
+    ],
+    "ra": [],
+    "dec": [],
+    "pmt": [],
+    "angles": [],
+    "radii_km": [
+     6051.8,
+     6051.8,
+     6051.8
+    ]
+   },
+   "shape": {
+    "equator": 1.0000000000000004,
+    "polar": 1.0000000000000004
+   },
+   "atmosphere": 15258278,
+   "atmo_size": 1.03,
+   "projection": "정거원통 (경도 0 = 그림 가운데, 동쪽이 오른쪽, 위 = 북)"
+  },
+  "Mars": {
+   "source_dir": "data/textures/mars",
+   "lo": {
+    "file": "m4.planet_mars_2k.webp",
+    "bytes": 600876,
+    "sha256": "3804996855f9902d467c32026ec1578e50118b0c392daf9ca31f22faf6a4fd24",
+    "size_px": [
+     2048,
+     1024
+    ],
+    "from": "data/textures/mars/mars_viking_mdim21_clrmosaic_1km.jpg",
+    "reduce": "면적 평균 (Pillow BOX)",
+    "webp": {
+     "quality": 90
+    }
+   },
+   "hi": {
+    "file": "m4.planet_mars_hi.webp",
+    "bytes": 9256982,
+    "sha256": "7298500a5c5637e2f09a7ccd018cc5bb5f82fbd0cf1a8d931fa41509ed4ccb26",
+    "size_px": [
+     8192,
+     4096
+    ],
+    "from": "data/textures/mars/mars_viking_mdim21_clrmosaic_1km.jpg",
+    "reduce": "면적 평균 (Pillow BOX)",
+    "webp": {
+     "quality": 90
+    }
+   },
+   "license": "공공 영역 (USGS Astrogeology 목록 — Access Constraints: Public domain, Use Constraints: None)",
+   "attribution": "NASA / USGS Astrogeology, Viking MDIM 2.1 Colorized Global Mosaic",
+   "coef": {
+    "pole_ra": [
+     317.269202,
+     -0.10927547,
+     0.0
+    ],
+    "pole_dec": [
+     54.432516,
+     -0.05827105,
+     0.0
+    ],
+    "pm": [
+     176.049863,
+     350.891982443297,
+     0.0
+    ],
+    "ra": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     6.8e-05,
+     0.000238,
+     5.2e-05,
+     9e-06,
+     0.419057,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "dec": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     5.1e-05,
+     0.000141,
+     3.1e-05,
+     5e-06,
+     1.591274,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "pmt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.000145,
+     0.000157,
+     4e-05,
+     1e-06,
+     1e-06,
+     0.584542
+    ],
+    "angles": [
+     [
+      190.72646643,
+      15917.10818695
+     ],
+     [
+      0.0,
+      21.4689247
+     ],
+     [
+      31834.27934054,
+      0.0
+     ],
+     [
+      332.86082793,
+      19139.89694742
+     ],
+     [
+      0.0,
+      394.93256437
+     ],
+     [
+      38280.79631835,
+      0.0
+     ],
+     [
+      189.6327156,
+      41215158.1842005
+     ],
+     [
+      12.711923222,
+      121.46893664
+     ],
+     [
+      660.22803474,
+      0.0
+     ],
+     [
+      231.05028581,
+      660.9912354
+     ],
+     [
+      0.0,
+      251.37314025
+     ],
+     [
+      1320.50145245,
+      0.0
+     ],
+     [
+      217.98635955,
+      38279.9612555
+     ],
+     [
+      0.0,
+      196.19729402
+     ],
+     [
+      19139.83628608,
+      0.0
+     ],
+     [
+      198.991226,
+      19139.4819985
+     ],
+     [
+      0.0,
+      226.292679
+     ],
+     [
+      38280.8511281,
+      0.0
+     ],
+     [
+      249.663391,
+      57420.7251593
+     ],
+     [
+      0.0,
+      266.18351
+     ],
+     [
+      76560.636795,
+      0.0
+     ],
+     [
+      79.398797,
+      0.5042615
+     ],
+     [
+      0.0,
+      122.433576
+     ],
+     [
+      19139.9407476,
+      0.0
+     ],
+     [
+      43.058401,
+      38280.8753272
+     ],
+     [
+      0.0,
+      57.663379
+     ]
+    ],
+    "radii_km": [
+     3396.19,
+     3396.19,
+     3376.2
+    ]
+   },
+   "shape": {
+    "equator": 1.001969736845686,
+    "polar": 0.9960721354042043
+   },
+   "atmosphere": 14262908,
+   "atmo_size": 1.02,
+   "projection": "정거원통 (경도 0 = 그림 가운데, 동쪽이 오른쪽, 위 = 북)"
+  },
+  "Jupiter": {
+   "source_dir": "data/textures/jupiter",
+   "lo": {
+    "file": "m4.planet_jupiter_2k.webp",
+    "bytes": 197508,
+    "sha256": "ab03ee5bb7b27c4f7d0d6ba16cddb450aa939711407c425689b1424e79eb4184",
+    "size_px": [
+     2048,
+     1024
+    ],
+    "from": "data/textures/jupiter/PIA07782.tif",
+    "reduce": "면적 평균 (Pillow BOX)",
+    "webp": {
+     "quality": 90
+    }
+   },
+   "hi": {
+    "file": "m4.planet_jupiter_hi.webp",
+    "bytes": 410074,
+    "sha256": "bb20c2dac6d88a3c0fd0d85633f8aef0e742eb9bb503b3b0f65d4e7bf689181e",
+    "size_px": [
+     3600,
+     1800
+    ],
+    "from": "data/textures/jupiter/PIA07782.tif",
+    "reduce": "그대로",
+    "webp": {
+     "quality": 90
+    }
+   },
+   "license": "NASA/JPL 이미지 (JPL Image Use Policy — 사전 허가 없이 사용 가능, 로고·보증 암시 금지)",
+   "attribution": "NASA/JPL/Space Science Institute (PIA07782)",
+   "coef": {
+    "pole_ra": [
+     268.056595,
+     -0.006499,
+     0.0
+    ],
+    "pole_dec": [
+     64.495303,
+     0.002413,
+     0.0
+    ],
+    "pm": [
+     284.95,
+     870.536,
+     0.0
+    ],
+    "ra": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.000117,
+     0.000938,
+     0.001432,
+     3e-05,
+     0.00215
+    ],
+    "dec": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     5e-05,
+     0.000404,
+     0.000617,
+     -1.3e-05,
+     0.000926
+    ],
+    "pmt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "angles": [
+     [
+      73.32,
+      91472.9
+     ],
+     [
+      24.62,
+      45137.2
+     ],
+     [
+      283.9,
+      4850.7
+     ],
+     [
+      355.8,
+      1191.3
+     ],
+     [
+      119.9,
+      262.1
+     ],
+     [
+      229.8,
+      64.3
+     ],
+     [
+      352.25,
+      2382.6
+     ],
+     [
+      113.35,
+      6070.0
+     ],
+     [
+      146.64,
+      182945.8
+     ],
+     [
+      49.24,
+      90274.4
+     ],
+     [
+      99.360714,
+      4850.4046
+     ],
+     [
+      175.895369,
+      1191.9605
+     ],
+     [
+      300.323162,
+      262.5475
+     ],
+     [
+      114.012305,
+      6070.2476
+     ],
+     [
+      49.511251,
+      64.3
+     ]
+    ],
+    "radii_km": [
+     71492.0,
+     71492.0,
+     66854.0
+    ]
+   },
+   "shape": {
+    "equator": 1.0226099557843027,
+    "polar": 0.9562687571197304
+   },
+   "atmosphere": 14205088,
+   "atmo_size": 1.015,
+   "projection": "정거원통 (경도 0 = 그림 가운데, 동쪽이 오른쪽, 위 = 북) — 매개 위도로 다시 잡음 (행성중심 위도 원본)"
+  },
+  "Saturn": {
+   "source_dir": "data/textures/saturn",
+   "lo": {
+    "file": "m4.planet_saturn_2k.webp",
+    "bytes": 59112,
+    "sha256": "baedddf7db60bea91b8e1c98ca90e6742dd1c131d886fa2e94e305ee8aeb531b",
+    "size_px": [
+     2048,
+     1024
+    ],
+    "from": "data/textures/saturn/2k_saturn.jpg",
+    "reduce": "그대로",
+    "webp": {
+     "quality": 90
+    }
+   },
+   "hi": {
+    "file": "m4.planet_saturn_hi.webp",
+    "bytes": 167264,
+    "sha256": "f23acc2f17f6753730e2dd34816ae7aea6d423631346d67fd9c9b9c9e7464802",
+    "size_px": [
+     4096,
+     2048
+    ],
+    "from": "data/textures/saturn/8k_saturn.jpg",
+    "reduce": "그대로",
+    "webp": {
+     "quality": 90
+    }
+   },
+   "license": "CC BY 4.0",
+   "attribution": "Solar System Scope (INOVE), https://www.solarsystemscope.com/textures/",
+   "coef": {
+    "pole_ra": [
+     40.589,
+     -0.036,
+     0.0
+    ],
+    "pole_dec": [
+     83.537,
+     -0.004,
+     0.0
+    ],
+    "pm": [
+     38.9,
+     810.7939024,
+     0.0
+    ],
+    "ra": [],
+    "dec": [],
+    "pmt": [],
+    "angles": [],
+    "radii_km": [
+     60268.0,
+     60268.0,
+     54364.0
+    ]
+   },
+   "shape": {
+    "equator": 1.0349637179153632,
+    "polar": 0.9335761525312073
+   },
+   "atmosphere": 14929818,
+   "atmo_size": 1.015,
+   "projection": "정거원통 (경도 0 = 그림 가운데, 동쪽이 오른쪽, 위 = 북)"
+  },
+  "Uranus": {
+   "source_dir": "data/textures/uranus",
+   "lo": {
+    "file": "m4.planet_uranus_2k.webp",
+    "bytes": 11406,
+    "sha256": "fa9608375c2c5805fdd23d879151e6ad187a142474c8298f28441df66740660c",
+    "size_px": [
+     2048,
+     1024
+    ],
+    "from": "data/textures/uranus/2k_uranus.jpg",
+    "reduce": "그대로",
+    "webp": {
+     "quality": 90
+    }
+   },
+   "hi": null,
+   "license": "CC BY 4.0",
+   "attribution": "Solar System Scope (INOVE), https://www.solarsystemscope.com/textures/",
+   "coef": {
+    "pole_ra": [
+     257.311,
+     0.0,
+     0.0
+    ],
+    "pole_dec": [
+     -15.175,
+     0.0,
+     0.0
+    ],
+    "pm": [
+     203.81,
+     -501.1600928,
+     0.0
+    ],
+    "ra": [],
+    "dec": [],
+    "pmt": [],
+    "angles": [],
+    "radii_km": [
+     25559.0,
+     25559.0,
+     24973.0
+    ]
+   },
+   "shape": {
+    "equator": 1.007761385899253,
+    "polar": 0.9846560933550624
+   },
+   "atmosphere": 10475744,
+   "atmo_size": 1.02,
+   "projection": "정거원통 (경도 0 = 그림 가운데, 동쪽이 오른쪽, 위 = 북)"
+  },
+  "Neptune": {
+   "source_dir": "data/textures/neptune",
+   "lo": {
+    "file": "m4.planet_neptune_2k.webp",
+    "bytes": 27180,
+    "sha256": "2a1e452cdd803a8cf487363ae43ee58aef910d4713a772f86f0d3d7e45e6400a",
+    "size_px": [
+     2048,
+     1024
+    ],
+    "from": "data/textures/neptune/2k_neptune.jpg",
+    "reduce": "그대로",
+    "webp": {
+     "quality": 90
+    }
+   },
+   "hi": null,
+   "license": "CC BY 4.0",
+   "attribution": "Solar System Scope (INOVE), https://www.solarsystemscope.com/textures/",
+   "coef": {
+    "pole_ra": [
+     299.36,
+     0.0,
+     0.0
+    ],
+    "pole_dec": [
+     43.46,
+     0.0,
+     0.0
+    ],
+    "pm": [
+     249.978,
+     541.1397757,
+     0.0
+    ],
+    "ra": [
+     0.7,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "dec": [
+     -0.51,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "pmt": [
+     -0.48,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "angles": [
+     [
+      357.85,
+      52.316
+     ],
+     [
+      323.92,
+      62606.6
+     ],
+     [
+      220.51,
+      55064.2
+     ],
+     [
+      354.27,
+      46564.5
+     ],
+     [
+      75.31,
+      26109.4
+     ],
+     [
+      35.36,
+      14325.4
+     ],
+     [
+      142.61,
+      2824.6
+     ],
+     [
+      177.85,
+      52.316
+     ]
+    ],
+    "radii_km": [
+     24764.0,
+     24764.0,
+     24341.0
+    ]
+   },
+   "shape": {
+    "equator": 1.0057594603851003,
+    "polar": 0.9885798346484302
+   },
+   "atmosphere": 7048432,
+   "atmo_size": 1.02,
+   "projection": "정거원통 (경도 0 = 그림 가운데, 동쪽이 오른쪽, 위 = 북)"
+  }
+ },
+ "saturn_ring": {
+  "lo": {
+   "file": "m4.saturn_ring_2k.webp",
+   "bytes": 8488,
+   "sha256": "7fa9e21dbe6522ef80dc2f86f469bca1e86fd2bb676a372d45e865b54cdfbade",
+   "size_px": [
+    2048,
+    125
+   ],
+   "from": "data/textures/saturn_ring/2k_saturn_ring_alpha.png",
+   "webp": {
+    "lossless": true,
+    "quality": 100
+   }
+  },
+  "hi": {
+   "file": "m4.saturn_ring_hi.webp",
+   "bytes": 24412,
+   "sha256": "df4a54fc8e784eddb430093b9428da486db0f3405daa95dcbb974c78a4037e10",
+   "size_px": [
+    8192,
+    500
+   ],
+   "from": "data/textures/saturn_ring/8k_saturn_ring_alpha.png",
+   "webp": {
+    "lossless": true,
+    "quality": 100
+   }
+  },
+  "inner_km": 69368.5,
+  "outer_km": 141016.8778383288,
+  "u_b_outer": 0.6719970703125,
+  "u_a_outer": 0.9407958984375,
+  "encke_km_from_map": 133503.94368755678,
+  "encke_km_reference": 133589.0,
+  "r_eq_km": 60268.0,
+  "license": "CC BY 4.0",
+  "attribution": "Solar System Scope (INOVE), https://www.solarsystemscope.com/textures/"
+ },
+ "planets_rule": "행성 자세 M = R1(ε) · [R3(W) R1(90° − δ0) R3(90° + α0)]ᵀ, α0·δ0·W = IAU WGCCRE 2015 (Archinal 외 2018, NAIF pck00011.tpc). 그림 경도 0 = 본체 +x, 북 = 본체 +z. 타원체 = 체적 평균 반지름 × shape (equator·polar). 그림 출처 docs/텍스처_출처.md",
  "rule": "공개판: 2K 를 먼저 (첫 화면 뒤) → 화면에서 크면 8K (그래픽 묶음 1 — scene/texlod.js). 휴대폰 (가벼운 모드) 은 2K 만. 한 파일판은 2K 만 (결정 ㉗)",
  "single_exclude": [
   "m4.moon_8k.webp",
-  "m4.earth_day_8k.webp",
-  "m4.earth_night_8k.webp"
+  "m4.earth_clouds_8k.webp",
+  "m4.planet_mercury_hi.webp",
+  "m4.planet_venus_hi.webp",
+  "m4.planet_mars_hi.webp",
+  "m4.planet_jupiter_hi.webp",
+  "m4.planet_saturn_hi.webp",
+  "m4.saturn_ring_hi.webp"
  ]
 }
