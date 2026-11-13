@@ -344,10 +344,13 @@ input[type=range] { width: 100%; accent-color: var(--accent); }
 
 /* ---- 옛 C 요소 (C 에서 안 씀) */
 .layout-hybrid #top, .layout-hybrid #ephem-busy { display: none !important; }
-body.layout-hybrid { --lp: 0px; --rp: 0px; }
+body.layout-hybrid { --lp: 0px; --rp: 0px; word-break: keep-all; }   /* 한국어 줄바꿈 (Phase 4): 단어 중간에서 끊지 않음 */
+.layout-hybrid :is(.k-vbody, .k-pop, .k-tour, #help, #source) { overflow-wrap: anywhere; }   /* 글 상자 안에서 칸보다 긴 영문·숫자·경로만 넘침 처리로 끊음 (몸 전체에 주면 좁은 절대 위치 글자 — 연도 눈금 — 가 한 글자씩 끊김) */
 body.layout-hybrid.list-open { --lp: min(var(--vpanel-left), 100vw); }
 body.layout-hybrid.info-open { --rp: min(var(--vpanel-right), 100vw); }
 @media (max-width: 767px) { body.layout-hybrid.list-open, body.layout-hybrid.info-open { --lp: 0px; --rp: 0px; } }   /* 휴대폰: 판이 장면을 덮는다 (아래 시트는 Phase 5) */
+
+.layout-hybrid #labels { word-break: normal; overflow-wrap: normal; }   /* 장면 이름표는 그대로 (줄바꿈 규칙 밖) */
 
 /* ---- 모드 (13절 D): 일반에서 숨길 것 = data-only="expert" */
 body[data-mode="general"] [data-only="expert"], body[data-mode="expert"] [data-only="general"] { display: none !important; }
@@ -395,7 +398,7 @@ body.chrome-hidden [data-shell], body.chrome-hidden .k-scrim { opacity: 0 !impor
 .k-range::-moz-range-thumb { width: 11px; height: 11px; border: 0; border-radius: 50%; background: var(--fg-scene); box-shadow: 0 0 0 1px rgba(0, 0, 0, .5); }
 .k-range:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; box-shadow: 0 0 0 4px var(--focus-halo); border-radius: 4px; }
 .k-ticks { position: absolute; left: 6px; right: 6px; bottom: 0; height: 14px; pointer-events: none; }
-.k-ticks span { position: absolute; top: 0; transform: translateX(-50%); font-size: 12px; line-height: 14px; letter-spacing: var(--track-cap); color: var(--fg-scene-2); }
+.k-ticks span { position: absolute; top: 0; white-space: nowrap; transform: translateX(-50%); font-size: 12px; line-height: 14px; letter-spacing: var(--track-cap); color: var(--fg-scene-2); }
 .k-ticks span:first-child { transform: none; } .k-ticks span:last-child { transform: translateX(-100%); }   /* 양 끝 눈금은 안쪽으로 (휴대폰에서 화면 밖으로 잘리지 않게) */
 .k-dateacts { display: flex; align-items: center; gap: 2px; }
 .k-dateblock { display: inline-flex; align-items: center; }
@@ -405,7 +408,7 @@ body.chrome-hidden [data-shell], body.chrome-hidden .k-scrim { opacity: 0 !impor
 .k-date.is-busy .k-dmain::after { content: ''; display: inline-block; width: 9px; height: 9px; margin-left: 6px; border-radius: 50%; border: 1.5px solid currentColor; border-right-color: transparent; animation: k-spin .8s linear infinite; vertical-align: -1px; }
 
 /* ================================================================ 바닥 줄 — 출처 한 단어 (+ 전문가: 좌표계, 임시) */
-.k-strip { position: fixed; z-index: 6; left: calc(var(--lp) + 12px); right: calc(var(--rp) + 12px); bottom: 2px; display: flex; align-items: center; gap: 12px; pointer-events: none;
+.k-strip { position: fixed; z-index: 6; left: calc(var(--lp) + 12px + var(--sal)); right: calc(var(--rp) + 12px + var(--sar)); bottom: 2px; display: flex; align-items: center; gap: 12px; pointer-events: none;
   transition: left var(--t-base) var(--ease), right var(--t-base) var(--ease), opacity var(--t-base) var(--ease), visibility var(--t-base); }
 .k-strip > * { pointer-events: auto; }
 .layout-hybrid .credits { position: static; max-width: none; }   /* 옛 출처 줄 (style.css .credits — 개발용 panel) 의 고정 자리를 쓰지 않음 */
@@ -416,12 +419,46 @@ body.chrome-hidden [data-shell], body.chrome-hidden .k-scrim { opacity: 0 !impor
 
 /* ================================================================ 첫 방문 안내 — 아래 한 줄 (장면을 가리지 않게) */
 .k-hint { position: fixed; z-index: 6; bottom: 100px; left: calc(var(--lp) + (100vw - var(--lp) - var(--rp)) / 2); transform: translateX(-50%); display: flex; align-items: center; gap: 14px;
-  white-space: nowrap; font-size: var(--fs-ui); }
+  white-space: nowrap; font-size: var(--fs-ui);
+  max-width: calc(100vw - var(--lp) - var(--rp) - 32px); flex-wrap: wrap; justify-content: center; row-gap: 4px; }   /* 판이 열리면 남은 장면 폭 안 — 넘치면 줄바꿈 (Phase 6: 1024 영어에서 왼쪽 밖 72 px 였음) */
+.k-hint .k-lead { white-space: normal; text-align: center; }
 .k-hint .k-lead { font-weight: 300; letter-spacing: .01em; }
 .k-hint .k-how { font-size: var(--fs-unit); letter-spacing: var(--track-cap); color: var(--fg-scene-2); }
 .k-hint .k-btn { height: 28px; font-size: var(--fs-unit); letter-spacing: var(--track-cap); color: var(--fg-scene); }
 .k-hint .k-icon { width: 28px; min-width: 28px; height: 28px; color: var(--fg-scene-2); }
 .k-hint .k-icon svg { width: 14px; height: 14px; }
+
+/* ---- 단축키 표 (? 키 · 설정 [단축키]): 팝오버와 같은 불투명 바탕 (Phase 4 결정 2026-11-13 — 전에는 반투명 --panel 이라 뒤 궤도선이 비침) */
+.layout-hybrid #help { z-index: 9; background: #0b0d12; border: 0; border-left: 1px solid var(--line-strong); border-radius: 2px; backdrop-filter: none; -webkit-backdrop-filter: none; }
+
+/* ================================================================ 둘러보기 (Phase 4, ui/tour.js) — 아래 가운데 카드 (첫 방문 안내 자리, 시간 막대 위). 팝오버와 같은 바탕 (장면 위 대비) */
+.k-tour { position: fixed; z-index: 8; bottom: 96px; left: calc(var(--lp) + (100vw - var(--lp) - var(--rp)) / 2); transform: translateX(-50%); width: min(520px, calc(100vw - 32px));
+  padding: 10px 14px 10px; background: #0b0d12; border-left: 1px solid var(--line-strong); border-radius: 2px; color: var(--fg); font-size: var(--fs-ui); }
+.k-tour[hidden] { display: none; }
+.k-thead { display: flex; align-items: center; gap: 10px; min-height: 28px; }
+.k-thead .k-tname { display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-unit); letter-spacing: var(--track-cap); color: var(--fg-2); }
+.k-thead .k-tname svg { width: 14px; height: 14px; }
+.k-tstep { font-size: var(--fs-unit); letter-spacing: var(--track-cap); color: var(--fg-2); font-variant-numeric: tabular-nums; }
+.k-thead .k-close { margin-left: auto; width: 32px; min-width: 32px; height: 32px; }
+.k-ttitle { margin: 4px 0 4px; font-size: 17px; font-weight: 400; line-height: 1.3; }
+.k-ttext { margin: 0; color: var(--fg); font-size: var(--fs-ui); line-height: 1.6; }
+.k-tnum.num-row { display: inline-flex; align-items: center; gap: 2px; padding: 0; border-top: 0; font-size: inherit; vertical-align: middle; white-space: nowrap; }
+.k-tnum .num { min-height: 28px; padding: 0 4px; border: 1px solid transparent; border-radius: var(--r-ctl); background: none; color: var(--fg); font: 600 var(--fs-ui)/1 var(--font); font-variant-numeric: tabular-nums; cursor: pointer; }
+.k-tnum .num:hover { border-color: var(--edge-hover); background: var(--hover); }
+.k-tnum .num:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; box-shadow: 0 0 0 4px var(--focus-halo); }
+.k-tpaused { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; margin: 8px 0 0; color: var(--fg-2); font-size: var(--fs-unit); }
+.k-tpaused[hidden] { display: none; }
+.k-tpaused .k-btn { height: 28px; font-size: var(--fs-unit); }
+.k-tfoot { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+.k-tfoot .k-tkeys { flex: 1; text-align: center; font-size: var(--fs-unit); color: var(--fg-2); }
+.k-tfoot .k-primary { margin-left: auto; }
+.k-flip { transform: scaleX(-1); }
+.k-tourhl { outline: 2px solid var(--focus); outline-offset: 2px; box-shadow: 0 0 0 4px var(--focus-halo); }
+body.touring #hint { display: none; }
+.k-touch .k-tour { left: calc(12px + var(--sal)); right: calc(12px + var(--sar)); width: auto; transform: none; bottom: calc(162px + var(--sab)); }
+.k-touch .k-tour .k-btn { height: 44px; min-width: 44px; }
+.k-touch .k-tour .k-close { width: 44px; height: 44px; }
+.k-touch .k-tnum .num { min-height: 44px; }
 
 /* ================================================================ 대상 목록 (왼쪽 세로 판) */
 .k-lhead { display: flex; align-items: center; gap: 8px; padding: 60px 16px 6px 24px; }
@@ -468,7 +505,7 @@ body.chrome-hidden [data-shell], body.chrome-hidden .k-scrim { opacity: 0 !impor
 .k-more > summary::-webkit-details-marker { display: none; }
 .k-more > summary::before { content: ''; width: 6px; height: 6px; margin: 0 8px 0 2px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(-45deg); transition: transform var(--t-fast) var(--ease); }
 .k-more[open] > summary::before { transform: rotate(45deg); }
-#info .num-row:not(.k-keycell) { grid-template-columns: 1fr auto auto; min-height: 40px; padding: 4px 0; border-top: 1px solid var(--line); font-size: 13px; }
+#info .num-row:not(.k-keycell):not(.k-tpop) { grid-template-columns: 1fr auto auto; min-height: 40px; padding: 4px 0; border-top: 1px solid var(--line); font-size: 13px; }
 #info .num-row .num-label { color: var(--fg-2); }
 #info .num-row:not(.k-keycell) .num { padding: 3px 6px; border: 1px solid transparent; border-radius: var(--r-ctl); background: none; color: var(--fg); font-size: var(--fs-ui); }
 #info .num-row:not(.k-keycell) .num:hover { border-color: var(--edge-hover); filter: none; }
@@ -477,20 +514,21 @@ body.chrome-hidden [data-shell], body.chrome-hidden .k-scrim { opacity: 0 !impor
 
 /* ================================================================ 꼬리표 D1 — 일반 모드 (정보 패널·시간 막대): 점 (색 + 모양), 누르면 팝오버. 전문가는 지금 글자 (Phase 3) */
 .tag .tag-shape { display: none; }
-body[data-mode="general"] :is(#info, #timebar) .tag:not(.tag-approx):not(.tag-open) { display: inline-grid; place-items: center; flex: none; width: var(--tag-hit); height: var(--tag-hit);
+body[data-mode="general"] :is(#info, #timebar, #tour) .tag:not(.tag-approx):not(.tag-open) { display: inline-grid; place-items: center; flex: none; width: var(--tag-hit); height: var(--tag-hit);
   padding: 0; border: 1px solid transparent; border-radius: var(--r-ctl); background: none; font-size: 0; line-height: 0; vertical-align: middle; cursor: pointer; }
-body[data-mode="general"] :is(#info, #timebar) .tag:not(.tag-approx):not(.tag-open) > .tag-name,
-body[data-mode="general"] :is(#info, #timebar) .tag:not(.tag-approx):not(.tag-open) > .tag-tip { display: none !important; }
-body[data-mode="general"] :is(#info, #timebar) .tag:not(.tag-approx):not(.tag-open) > .tag-shape { display: inline-grid; place-items: center; }
-body[data-mode="general"] :is(#info, #timebar) .tag:not(.tag-approx):not(.tag-open) > .tag-shape svg { width: var(--tag-dot); height: var(--tag-dot); }
-body[data-mode="general"] :is(#info, #timebar) .tag:not(.tag-approx):not(.tag-open):hover { border-color: var(--edge-hover); background: var(--hover); }
-body[data-mode="general"] :is(#info, #timebar) .tag:not(.tag-approx):not(.tag-open):focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; box-shadow: 0 0 0 4px var(--focus-halo); }
-.layout-hybrid :is(#info, #timebar) .tag:not(.tag-approx):not(.tag-open) { cursor: pointer; }
+body[data-mode="general"] :is(#info, #timebar, #tour) .tag:not(.tag-approx):not(.tag-open) > .tag-name,
+body[data-mode="general"] :is(#info, #timebar, #tour) .tag:not(.tag-approx):not(.tag-open) > .tag-tip { display: none !important; }
+body[data-mode="general"] :is(#info, #timebar, #tour) .tag:not(.tag-approx):not(.tag-open) > .tag-shape { display: inline-grid; place-items: center; }
+body[data-mode="general"] :is(#info, #timebar, #tour) .tag:not(.tag-approx):not(.tag-open) > .tag-shape svg { width: var(--tag-dot); height: var(--tag-dot); }
+body[data-mode="general"] :is(#info, #timebar, #tour) .tag:not(.tag-approx):not(.tag-open):hover { border-color: var(--edge-hover); background: var(--hover); }
+body[data-mode="general"] :is(#info, #timebar, #tour) .tag:not(.tag-approx):not(.tag-open):focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; box-shadow: 0 0 0 4px var(--focus-halo); }
+.layout-hybrid :is(#info, #timebar, #tour) .tag:not(.tag-approx):not(.tag-open) { cursor: pointer; }
 
 /* ================================================================ 팝오버 (한 번에 하나) */
 .k-pop { position: fixed; z-index: 9; width: 300px; max-width: calc(100vw - 24px); max-height: min(70vh, 640px); overflow: auto; padding: 12px 14px;
   background: #0b0d12; border-left: 1px solid var(--line-strong); border-radius: 2px; color: var(--fg); font-size: 13px; }
 .k-pop-wide { width: 440px; }
+.k-pop.k-pop-inline { position: static; z-index: auto; width: auto; max-width: none; max-height: none; margin: 8px 0 4px; grid-column: 1 / -1; border-left-color: var(--line-strong); background: rgba(255, 255, 255, .05); }   /* 정보 패널 안 (Phase 4): 흐름 속 — 아래 줄을 밀어낸다 */
 .k-popsect + .k-popsect, .k-popsect + .layer-panel { margin-top: 14px; }
 .k-popsect h4 { margin: 0 0 6px; font-size: var(--fs-unit); font-weight: 400; letter-spacing: var(--track-cap); color: var(--fg-2); }
 .k-pop .k-sub { margin: 0 0 6px; color: var(--fg-2); font-size: var(--fs-unit); line-height: 1.5; }
@@ -511,21 +549,21 @@ body[data-mode="general"] :is(#info, #timebar) .tag:not(.tag-approx):not(.tag-op
 .k-tsrc code { color: var(--fg); font-size: var(--fs-unit); }
 
 /* ================================================================ 휴대폰 (보기만 — 아래 시트·safe-area 완성은 Phase 5) */
-.k-touch .k-nav, .k-touch .k-tr { top: 10px; }
-.k-touch .k-nav { left: 8px; max-width: calc(100vw - 200px); }
-.k-touch .k-tr { right: 8px; gap: 0; }
+.k-touch .k-nav, .k-touch .k-tr { top: calc(10px + var(--sat)); }
+.k-touch .k-nav { left: calc(8px + var(--sal)); max-width: calc(100vw - 200px - var(--sal) - var(--sar)); }
+.k-touch .k-tr { right: calc(8px + var(--sar)); gap: 0; }
 .k-touch .k-tkind { display: none; }
 .k-touch .k-small, .k-touch .credits.k-btn { height: 44px; min-width: 44px; line-height: 44px; }
 .k-touch .k-play { width: 44px; min-width: 44px; height: 44px; }
 .k-touch .k-range { height: 44px; }                                          /* 휴대폰 슬라이더 누를 자리 44 px */
 .k-touch .k-modesel > button { height: 44px; min-width: 44px; }
-.k-touch .k-timebar { bottom: calc(48px + env(safe-area-inset-bottom)); width: calc(100vw - 16px); gap: 4px 8px; grid-template-columns: auto auto 1fr auto;
+.k-touch .k-timebar { bottom: calc(48px + var(--sab)); left: calc(50vw + (var(--sal) - var(--sar)) / 2); width: calc(100vw - 16px - var(--sal) - var(--sar)); gap: 4px 8px; grid-template-columns: auto auto 1fr auto;
   grid-template-areas: 'slider slider slider slider' 'play speed . date'; }
 .k-touch .k-timebar > .k-play { grid-area: play; } .k-touch .k-timebar > .k-speed { grid-area: speed; }
 .k-touch .k-timebar > .k-slider { grid-area: slider; } .k-touch .k-timebar > .k-dateacts { grid-area: date; }
-.k-touch .k-strip { bottom: calc(env(safe-area-inset-bottom)); }
+.k-touch .k-strip { bottom: var(--sab); }
 .k-touch .credits.k-btn { height: 44px; min-width: 44px; line-height: 44px; }
-.k-touch .k-hint { left: 12px; right: 12px; transform: none; bottom: calc(162px + env(safe-area-inset-bottom)); white-space: normal; flex-wrap: wrap; justify-content: center; text-align: center; row-gap: 6px; }
+.k-touch .k-hint { left: calc(var(--lp) + 12px + var(--sal)); right: calc(var(--rp) + 12px + var(--sar)); max-width: none; transform: none; bottom: calc(162px + var(--sab)); white-space: normal; flex-wrap: wrap; justify-content: center; text-align: center; row-gap: 6px; }
 .k-touch .k-hint .k-lead, .k-touch .k-hint .k-how { flex-basis: 100%; }
 .k-touch .k-hint .k-btn, .k-touch .k-hint .k-icon { height: 44px; min-width: 44px; }
 
@@ -540,3 +578,143 @@ body[data-mode="general"] :is(#info, #timebar) .tag:not(.tag-approx):not(.tag-op
    4.5 미만이 남음 (지구–달–L1·L2 보기의 L2 3.92). 숫자 칸 (.lbl-num) 은 원래 어둠 0.45 가 있다 */
 .layout-hybrid #labels .lbl b, .layout-hybrid #labels .lbl-name, .layout-hybrid #labels .lbl-name-only, .layout-hybrid #labels .lbl-fixed {
   background: rgba(0, 0, 0, 0.42); border-radius: 3px; padding: 0 2px; }
+
+/* ================================================================ UI 재설계 Phase 3 (2026-11-13) — 전문가 모드 + 일반 다듬기 (시안 2 · 13절) */
+/* 전문가 꼬리표: 모양 기호 (7 px, 색) + 글자 (14절). 패널 안 글자는 꼬리표 색 그대로, 장면 위 (시간 막대·상태 줄) 는 장면 글자색 — 기호만 색 */
+body[data-mode="expert"] :is(#info, #timebar, #status, #tour) .tag:not(.tag-approx):not(.tag-open) { display: inline-flex; align-items: center; gap: 4px; min-height: 28px; padding: 0 4px; border-color: transparent; background: none; cursor: pointer; }
+body[data-mode="expert"] :is(#info, #timebar, #status, #tour) .tag:not(.tag-approx):not(.tag-open) > .tag-shape { display: inline-grid; place-items: center; }
+body[data-mode="expert"] :is(#info, #timebar, #status, #tour) .tag:not(.tag-approx):not(.tag-open) > .tag-shape svg { width: var(--tag-dot); height: var(--tag-dot); }
+body[data-mode="expert"] :is(#timebar, #status) .tag:not(.tag-approx):not(.tag-open) > .tag-name { color: var(--fg-scene); }
+body[data-mode="expert"] :is(#info, #timebar, #status, #tour) .tag:not(.tag-approx):not(.tag-open):hover { border-color: var(--edge-hover); background: var(--hover); }
+body[data-mode="expert"] :is(#info, #timebar, #status, #tour) .tag:not(.tag-approx):not(.tag-open):focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; box-shadow: 0 0 0 4px var(--focus-halo); }
+body[data-mode="expert"] :is(#info, #timebar, #status, #tour) .tag:not(.tag-approx):not(.tag-open) > .tag-tip { display: none; }
+.k-tpop .tag-open > .tag-shape { display: inline-grid; place-items: center; margin-right: 6px; }
+.k-tpop .tag-open > .tag-shape svg { width: 9px; height: 9px; }
+.k-teasy { margin: 8px 0 0; color: var(--fg); font-size: 13px; line-height: 1.5; }
+.k-tpop .k-cap { margin-top: 8px; }
+
+/* 전문가 탭 [요약 | 모든 숫자 | 출처] — 누를 자리 28 px, 고른 탭은 밑줄 (시안 2 의 일반·전문가 고르기와 같은 말씨) */
+.k-tabwrap { display: flex; flex-direction: column; min-height: 0; flex: 1 1 auto; }
+.k-tabs { display: flex; gap: 2px; padding: 0 16px; border-bottom: 1px solid var(--line); flex: none; }
+.k-tab { min-height: 32px; min-width: 28px; padding: 0 10px; border: 1px solid transparent; border-radius: var(--r-ctl) var(--r-ctl) 0 0; background: none; color: var(--fg-2);
+  font: 400 var(--fs-unit)/1 var(--font); letter-spacing: var(--track-cap); cursor: pointer; }
+.k-tab[aria-selected="true"] { color: var(--fg); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 7px; }
+.k-tab:hover { background: var(--hover); border-color: var(--edge-hover); }
+.k-tab:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.k-pane[hidden] { display: none !important; }
+.k-srcrow { padding: 10px 0; border-top: 1px solid var(--line); }
+.k-srcrow:first-child { border-top: 0; }
+.k-srcrow .k-lab { font-size: 13px; color: var(--fg); line-height: 1.35; }
+.k-srcpath { margin: 4px 0 0; font-size: var(--fs-unit); overflow-wrap: anywhere; }
+.k-srcpath code { color: var(--fg); }
+.k-srcmeta { margin: 2px 0 6px; font-size: 12px; color: var(--fg-2); overflow-wrap: anywhere; }
+
+/* 바닥 상태 줄 (전문가): 오른쪽에 TDB · 좌표계 · 초점 거리 — 장면 위 글자 (어둠 띠 안) */
+.k-status { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+.k-status .k-frame { margin-left: 0; }
+.k-stitem { display: inline-flex; align-items: center; gap: 6px; min-height: 28px; font-size: 12px; letter-spacing: var(--track-cap); color: var(--fg-scene-2); text-shadow: 0 1px 2px rgba(0, 0, 0, .55); }
+.k-stitem .k-stval { color: var(--fg-scene); font-variant-numeric: tabular-nums; }
+.k-stitem .tag-approx { font-size: 11px; }
+
+/* 전문가 속도 묶음 3 개 — 누를 자리 28 px 이상, 단위 글자 한 번 (13절 E1) */
+.k-speedseg { gap: 0; }
+.k-speedseg > button { min-width: 32px; }
+.k-speedseg .k-segunit { margin-left: 4px; font-size: var(--fs-unit); letter-spacing: var(--track-cap); color: var(--fg-scene-2); }
+
+/* 내보내기 팝오버 */
+.k-shareurl { width: 100%; margin: 6px 0; font-size: 12px; }
+#pop-export .k-acts { gap: 6px; margin: 6px 0; }
+#pop-export .k-cap { margin: 0 0 0 6px; }
+
+/* 실험실 배치 (전문가·컴퓨터): 오른쪽 세로 판 자리 — 위 막대 아래부터 시간 막대 위까지, 정보 패널과 같은 판 모양 */
+.layout-hybrid .lab { top: 64px; right: 0; bottom: 132px; width: min(640px, calc(100vw - 32px)); border: 0; border-left: 1px solid var(--line); border-radius: 0; background: var(--surface); box-shadow: none; }
+@media (max-width: 767px) { .layout-hybrid .lab { left: 0; width: auto; top: auto; bottom: 120px; border-left: 0; border-top: 1px solid var(--line); } }
+/* 정보 패널의 숫자 줄 단추 (누르면 출처 창): 누를 자리 28 px (Phase 3 측정 — 전문가 "더 보기"·모든 숫자 줄이 24 px 였음) */
+.layout-hybrid #info .num-row > .num { min-height: 28px; }
+
+/* ================================================================ UI 재설계 Phase 5 (2026-11-13) — 휴대폰 아래 시트 · 태블릿 · safe-area · 좁은 바닥 줄 (docs/UI_재설계.md 18절) */
+/* safe-area (노치·홈 막대): env() 는 여기서만 읽고 자리는 모두 이 변수로 — 시험 (ui.spec Phase 5) 이 변수를 바꿔 노치를 흉내 낸다. index.html viewport-fit=cover */
+:root { --sat: env(safe-area-inset-top, 0px); --sab: env(safe-area-inset-bottom, 0px); --sal: env(safe-area-inset-left, 0px); --sar: env(safe-area-inset-right, 0px); }
+.k-safeprobe { position: fixed; left: 0; top: 0; width: 0; height: 0; padding: var(--sat) 0 0 0; visibility: hidden; pointer-events: none; }
+.k-touch .k-scrim.k-top { height: calc(140px + var(--sat)); }
+.layout-hybrid #update { top: calc(56px + var(--sat)); right: calc(16px + var(--sar)); }
+.k-touch #source { top: calc(64px + var(--sat)); }
+
+/* ---- 아래 시트 (body.k-phone = 터치·폭 768 미만: 목록·정보 / body.k-tablet = 터치·폭 768 이상: 목록만 — 정보는 오른쪽 판). 두 단계 반쯤·전체 (ui/sheet.js) */
+.k-grab { display: none; }
+body.k-phone .k-vpanel, body.k-tablet #targets { top: auto; left: var(--sal); right: var(--sar); bottom: 0; width: auto; height: var(--sheet-half, 52vh); max-height: var(--sheet-full, 85vh);
+  z-index: 8; border: 0; border-top: 1px solid var(--line-strong); border-radius: 12px 12px 0 0; padding-bottom: var(--sab);
+  transition: transform var(--t-base) var(--ease), opacity var(--t-base) var(--ease), visibility var(--t-base), height var(--t-base) var(--ease); }
+body.k-phone .k-vpanel[data-sheet="full"], body.k-tablet #targets[data-sheet="full"] { height: var(--sheet-full, 85vh); }
+body.k-phone .k-vpanel[data-open="false"], body.k-tablet #targets[data-open="false"] { transform: translateY(40px); }
+body .k-vpanel.k-dragging { transition: none; }
+body.k-phone .k-grab, body.k-tablet #targets .k-grab { display: block; position: absolute; z-index: 2; top: 0; left: 64px; right: 64px; height: 44px; padding: 0; border: 0;
+  border-radius: var(--r-ctl); background: none; cursor: grab; touch-action: none; }
+.k-grabbar { display: block; width: 40px; height: 4px; margin: 9px auto 0; border-radius: 2px; background: rgba(255, 255, 255, .55); transition: background var(--t-fast) var(--ease); }
+.k-grab:hover .k-grabbar, .k-grab:active .k-grabbar { background: rgba(255, 255, 255, .9); }
+.k-grab:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; box-shadow: none; }
+body.k-phone .k-vpanel .k-vhead { padding: 28px 60px 2px 20px; }
+body.k-phone .k-vpanel .k-vhead .k-close { top: 4px; right: 8px; }
+body.k-phone .k-vpanel .k-vhead h3.k-name { padding-right: 0; font-size: 30px; }
+body.k-phone .k-vpanel .k-vbody { padding: 0 20px 16px; }
+body.k-phone .k-vpanel .k-vfoot { padding: 8px 20px 10px; }
+body.k-phone .k-vpanel .k-tabs { padding: 0 12px; }
+body.k-phone .k-lhead, body.k-tablet .k-lhead { padding: 44px 8px 6px 16px; }
+body.k-phone .k-list, body.k-tablet .k-list { padding: 0 12px 16px; }
+/* 시트가 열리면: 장면 (캔버스) 은 시트 위 영역 — 초점이 보이는 곳 가운데. 시간 막대·바닥 줄·안내는 시트 밑이라 숨김 (닫으면 그대로 돌아옴) */
+body.sheet-open #scene { height: calc(100vh - var(--sheet-half, 52vh)); }
+body.sheet-open :is(#timebar, #strip, #hint, .scalebar), body.sheet-open .k-scrim.k-bottom { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+body.k-phone.list-open, body.k-phone.info-open, body.k-tablet.list-open { --lp: 0px; }
+body.k-phone.info-open { --rp: 0px; }
+
+/* ---- 태블릿 (768 — 6절: 휴대폰 배치 + 정보 패널만 오른쪽): 정보가 열리면 장면은 판 왼쪽 영역, 시간 막대도 그 폭 */
+body.k-tablet.info-open #scene { width: calc(100vw - var(--rp)); }
+body.k-tablet .k-timebar { left: calc(var(--lp) + var(--sal) + (100vw - var(--lp) - var(--rp) - var(--sal) - var(--sar)) / 2); width: calc(100vw - var(--lp) - var(--rp) - 16px - var(--sal) - var(--sar)); }
+body.k-tablet #info { right: var(--sar); padding-bottom: var(--sab); }
+body.k-tablet #info .k-vhead { padding-top: calc(64px + var(--sat)); }
+body.k-tablet #info .k-vhead .k-close { top: calc(60px + var(--sat)); }
+
+/* ---- 터치 기기의 누를 자리 44 px (패널·팝오버 안 — Phase 5 측정): 숫자 단추·더 보기·탭·메뉴·날짜 입력·전문가 꼬리표 */
+body.k-touch #info .num-row > .num, body.k-touch .k-keycell .k-val, body.k-touch .k-more > summary, body.k-touch .k-tab, body.k-touch .k-menuitem, body.k-touch .k-dateinput { min-height: 44px; }
+body.k-touch #info .num-row > .num { min-width: 44px; }
+body.k-touch[data-mode="expert"] :is(#info, #timebar, #status, #tour) .tag:not(.tag-approx):not(.tag-open) { min-height: 44px; min-width: 44px; justify-content: center; }
+
+/* ---- 터치 (휴대폰·태블릿) 전문가 시간 막대: 속도 묶음 [1·10·30] 대신 일반과 같은 속도 단추 하나 (같은 기능 — 메뉴) — 한 줄에 재생·속도·날짜·꼬리표·현재 (17-6 질문 2) */
+body.k-touch[data-mode="expert"] #speed-btn { display: inline-flex !important; }
+body.k-touch[data-mode="expert"] #speed-seg { display: none !important; }
+body.k-touch[data-mode="expert"] .k-date.num { font-size: 14px; }
+
+/* ---- 바닥 상태 줄 접기 (shell.js fitStrip): 한 줄에 안 들어가면 [상태 ▴] → 팝오버 안에 같은 요소 */
+.k-status, .k-status * { white-space: nowrap; }
+.k-strip > .credits { flex: none; }
+.k-stmore { margin-left: auto; gap: 4px; }
+.k-stmore[hidden] { display: none !important; }
+.k-stmore svg { width: 12px; height: 12px; transform: rotate(180deg); }
+.k-stmore[aria-expanded="true"] svg { transform: none; }
+#pop-status { width: auto; min-width: 220px; }
+#pop-status .k-status { flex-direction: column; align-items: flex-start; gap: 10px; margin: 0; }
+#pop-status .k-stitem { text-shadow: none; color: var(--fg-2); }
+#pop-status .k-stitem .k-stval { color: var(--fg); }
+.k-touch .k-searchwrap kbd { display: none; }                             /* 터치 기기에는 / 키가 없다 (Phase 5) */
+.k-touch .k-searchwrap { height: 44px; } .k-touch .k-search { height: 44px; }   /* 목록 검색 칸 누를 자리 44 px (Phase 5 측정 — 32 px 였음) */
+/* 휴대폰 위 줄: 검색 아이콘은 숨김 (목록 시트 맨 위 검색 칸과 같은 일 — 13절 D 의 일반 모드와 같은 까닭). 왼쪽 이름은 오른쪽 묶음 폭만큼 비키고 말줄임 (--tr-w, shell.js) */
+body.k-phone #search-btn { display: none !important; }
+.k-touch .k-nav { max-width: calc(100vw - var(--tr-w, 200px) - 24px - var(--sal) - var(--sar)); }
+.k-touch .k-nav.k-nav2 { max-width: calc(100vw - 16px - var(--sal) - var(--sar)); }   /* 이름 둘째 줄 (fitTop): 첫 줄 = 표지 (오른쪽 묶음과 같은 높이), 둘째 줄 = 이름 ▾ */
+.k-touch .k-nav.k-nav2 .k-navrow { flex-wrap: wrap; }
+.k-touch .k-nav.k-nav2 .k-mark { margin: 11px calc(100% - 28px) 11px 4px; }
+
+/* ================================================================ UI 재설계 Phase 6 (2026-11-13) — 일반 사용자도 여는 옛 판: 레이어 팝오버 내용 · 출처 창. 누를 자리 28 px (터치 44 px), 글자 12 px 이상 (docs/UI_재설계.md 19-3 남은 미달) */
+.layout-hybrid #pop-layers .preset-row button, .layout-hybrid #pop-layers .help-btn, .layout-hybrid #source .close { min-height: 28px; }
+.k-touch #pop-layers .preset-row button, .k-touch #pop-layers .help-btn, .k-touch #source .close { min-height: 44px; min-width: 44px; }
+.k-touch #source .tag-open { min-height: 44px; display: inline-flex; flex-wrap: wrap; align-items: center; }
+/* 체크 상자: 누를 자리 28 px (터치 44) 상자 안에 16 px 네모를 그림 (그림 = 배경 — 바깥 1 px 테두리 · 켜짐은 가운데 채움). 줄 전체 (label) 는 전처럼 누르는 자리 */
+.layout-hybrid .layer-group input[type=checkbox] { appearance: none; -webkit-appearance: none; flex: none; width: 28px; height: 28px; margin: 0 -2px 0 -6px; border: 0; border-radius: 4px; cursor: pointer;
+  background: center / 14px 14px no-repeat linear-gradient(#0b0d12, #0b0d12), center / 16px 16px no-repeat linear-gradient(var(--line-strong), var(--line-strong)); }
+.layout-hybrid .layer-group input[type=checkbox]:checked {
+  background: center / 8px 8px no-repeat linear-gradient(var(--accent), var(--accent)), center / 14px 14px no-repeat linear-gradient(#0b0d12, #0b0d12), center / 16px 16px no-repeat linear-gradient(var(--accent), var(--accent)); }
+.layout-hybrid .layer-group input[type=checkbox]:disabled { opacity: .4; cursor: default; }
+.layout-hybrid .layer-group input[type=checkbox]:focus-visible { outline: 2px solid var(--focus); outline-offset: -4px; box-shadow: none; }
+.layout-hybrid .layer-group label:hover input[type=checkbox]:not(:disabled) { background-color: var(--hover); }
+.k-touch .layer-group input[type=checkbox] { width: 44px; height: 44px; margin: 0 -8px 0 -12px; }
+.layout-hybrid .layer-group label.sub { padding-left: 12px; }
